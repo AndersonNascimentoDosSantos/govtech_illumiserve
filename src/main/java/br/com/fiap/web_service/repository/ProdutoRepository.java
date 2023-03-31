@@ -1,13 +1,13 @@
 package br.com.fiap.web_service.repository;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
 import br.com.fiap.web_service.model.Produto;
+import br.com.fiap.web_service.model.exception.ResourceNotFoundException;
 
 @Repository
 public class ProdutoRepository {
@@ -57,15 +57,17 @@ public class ProdutoRepository {
   public void deletar(Integer id) {
     produtos.removeIf(produto -> produto.getId() == id);
   }
-/**
- * metodo pra atualizar produto na lista
- * @param produto produto a ser atualizado 
- * @return
- */
+
+  /**
+   * metodo pra atualizar produto na lista
+   * 
+   * @param produto produto a ser atualizado
+   * @return
+   */
   public Produto atualizar(Produto produto) {
     Optional<Produto> produtoEncontrado = obterPorId(produto.getId());
     if (produtoEncontrado.isEmpty()) {
-      throw new InputMismatchException("produto nao encontrado");
+      throw new ResourceNotFoundException("produto nao encontrado");
     }
     deletar(produto.getId());
     produtos.add(produto);
