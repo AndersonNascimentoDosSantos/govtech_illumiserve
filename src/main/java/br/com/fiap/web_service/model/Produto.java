@@ -1,8 +1,18 @@
 package br.com.fiap.web_service.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+
+@Entity
 public class Produto {
   // #region atributes
-  private Integer id;
+  @Id
+	@SequenceGenerator(name = "produto", sequenceName = "seq_produto", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "produto")
+	  private Integer id;
 
   private String nome;
 
