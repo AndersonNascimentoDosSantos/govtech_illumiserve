@@ -11,7 +11,7 @@ public class ProdutoResponse {
 
   private Double valor;
 
-  private String observacao;
+  // private String observacao;
 
   // #endregion
 
@@ -48,13 +48,13 @@ public class ProdutoResponse {
     this.valor = valor;
   }
 
-  public String getObservacao() {
-    return observacao;
-  }
+  // public String getObservacao() {
+  // return observacao;
+  // }
 
-  public void setObservacao(String observacao) {
-    this.observacao = observacao;
-  }
+  // public void setObservacao(String observacao) {
+  // this.observacao = observacao;
+  // }
   // #endregion
 
 }
