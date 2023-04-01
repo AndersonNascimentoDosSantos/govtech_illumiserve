@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.fiap.web_service.model.Produto;
 import br.com.fiap.web_service.repository.ProdutoRepository;
+import br.com.fiap.web_service.shared.ProdutoDTO;
 
 @Service
 public class ProdutoService {
@@ -19,8 +20,9 @@ public class ProdutoService {
    * 
    * @return lista de produtos
    */
-  public List<Produto> obterTodos() {
-    return produtoRepository.obterTodos();
+  public List<ProdutoDTO> obterTodos() {
+    
+    return produtoRepository.findAll();
   }
 
   /**
@@ -29,8 +31,8 @@ public class ProdutoService {
    * @param id do produto a ser localizado
    * @return retorna um produto caso encotrado
    */
-  public Optional<Produto> obterPorId(Integer id) {
-    return produtoRepository.obterPorId(id);
+  public Optional<ProdutoDTO> obterPorId(Integer id) {
+    return produtoRepository.getReferenceById(id);
 
   }
 
@@ -40,10 +42,10 @@ public class ProdutoService {
    * @param produto produto a ser adicionado no banco
    * @return retorna o produto inserido na lista
    */
-  public Produto adicionar(Produto produto) {
+  public Produto adicionar(ProdutoDTO produto) {
     // acrescentar regras de validações
 
-    return produtoRepository.adicionar(produto);
+    return produtoRepository.save(produto);
   }
 
   /**
@@ -52,7 +54,7 @@ public class ProdutoService {
    * @param id do objeto a ser removido
    */
   public void deletar(Integer id) {
-    produtoRepository.deletar(id);
+    produtoRepository.deleteById(id);
   }
 
   /**
@@ -61,8 +63,8 @@ public class ProdutoService {
    * @param produto produto a ser atualizado
    * @return
    */
-  public Produto atualizar(Integer id, Produto produto) {
-    produto.setId(id);
-    return produtoRepository.atualizar(produto);
+  public Produto atualizar(Integer id, ProdutoDTO produtoDto) {
+    produtoDto.setId(id);
+    return produtoRepository.save(produtoDto);
   }
 }

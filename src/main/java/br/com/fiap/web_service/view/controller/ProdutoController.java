@@ -1,4 +1,4 @@
-package br.com.fiap.web_service.controller;
+package br.com.fiap.web_service.view.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +24,7 @@ public class ProdutoController {
 
   @GetMapping
   public List<Produto> obterTodos() {
-    return produtoService.obterTodos();
+    return produtoService.findAll();
   }
 
   @PostMapping
