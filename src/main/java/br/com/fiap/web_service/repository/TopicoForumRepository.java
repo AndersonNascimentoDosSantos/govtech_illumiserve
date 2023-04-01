@@ -1,12 +1,11 @@
 package br.com.fiap.web_service.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import br.com.fiap.web_service.model.TopicoForum;
 
-public class TopicoForumRepository extends Repository<TopicoForum> {
-
-	public TopicoForumRepository(Class<TopicoForum> clazz) {
-		super(clazz);
-		// TODO Auto-generated constructor stub
-	}
+@Repository
+public interface TopicoForumRepository extends JpaRepository<TopicoForum, Long> {
 
 }

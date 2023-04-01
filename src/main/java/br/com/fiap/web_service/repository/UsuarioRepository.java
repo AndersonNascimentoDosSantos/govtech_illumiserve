@@ -1,12 +1,11 @@
 package br.com.fiap.web_service.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import br.com.fiap.web_service.model.Usuario;
 
-public class UsuarioRepository extends Repository<Usuario> {
-
-	public UsuarioRepository(Class<Usuario> clazz) {
-		super(clazz);
-		// TODO Auto-generated constructor stub
-	}
+@Repository
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
 }
