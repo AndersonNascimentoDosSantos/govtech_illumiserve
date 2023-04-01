@@ -1,12 +1,11 @@
 package br.com.fiap.web_service.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import br.com.fiap.web_service.model.MensagemForum;
 
-public class MensagemForumRepository extends Repository<MensagemForum> {
-
-	public MensagemForumRepository(Class<MensagemForum> clazz) {
-		super(clazz);
-		// TODO Auto-generated constructor stub
-	}
+@Repository
+public interface MensagemForumRepository extends JpaRepository<MensagemForum, Long> {
 
 }

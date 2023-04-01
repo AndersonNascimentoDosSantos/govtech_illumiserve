@@ -1,12 +1,11 @@
 package br.com.fiap.web_service.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import br.com.fiap.web_service.model.Reclamacao;
 
-public class ReclamacaoRepository extends Repository<Reclamacao> {
-
-	public ReclamacaoRepository(Class<Reclamacao> clazz) {
-		super(clazz);
-		// TODO Auto-generated constructor stub
-	}
+@Repository
+public interface ReclamacaoRepository extends JpaRepository<Reclamacao, Long> {
 
 }

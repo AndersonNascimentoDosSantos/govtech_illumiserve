@@ -1,12 +1,11 @@
 package br.com.fiap.web_service.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import br.com.fiap.web_service.model.PostagemRedeSocial;
 
-public class PostagemRedeSocialRepository extends Repository<PostagemRedeSocial> {
-
-	public PostagemRedeSocialRepository(Class<PostagemRedeSocial> clazz) {
-		super(clazz);
-		// TODO Auto-generated constructor stub
-	}
+@Repository
+public interface PostagemRedeSocialRepository extends JpaRepository<PostagemRedeSocial, Long> {
 
 }

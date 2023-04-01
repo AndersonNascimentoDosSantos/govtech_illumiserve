@@ -1,12 +1,11 @@
 package br.com.fiap.web_service.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import br.com.fiap.web_service.model.RedeSocial;
 
-public class RedeSocialRepository extends Repository<RedeSocial> {
-
-	public RedeSocialRepository(Class<RedeSocial> clazz) {
-		super(clazz);
-		// TODO Auto-generated constructor stub
-	}
+@Repository
+public interface RedeSocialRepository extends JpaRepository<RedeSocial, Long> {
 
 }

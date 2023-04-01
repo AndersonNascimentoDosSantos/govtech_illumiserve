@@ -1,12 +1,11 @@
 package br.com.fiap.web_service.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import br.com.fiap.web_service.model.Empresa;
 
-public class EmpresaRepository extends Repository<Empresa> {
-
-	public EmpresaRepository(Class<Empresa> clazz) {
-		super(clazz);
-		// TODO Auto-generated constructor stub
-	}
+@Repository
+public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
 
 }
