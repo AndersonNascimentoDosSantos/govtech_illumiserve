@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fiap.web_service.services.ProdutoService;
 import br.com.fiap.web_service.shared.ProdutoDTO;
-import br.com.fiap.web_service.view.model.ProdutoRequest;
-import br.com.fiap.web_service.view.model.ProdutoResponse;
+import br.com.fiap.web_service.view.model.request.ProdutoRequest;
+import br.com.fiap.web_service.view.model.response.ProdutoResponse;
 
 @RestController
 @RequestMapping("/api/produtos")
