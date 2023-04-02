@@ -1,4 +1,4 @@
-package br.com.fiap.web_service.view.model;
+package br.com.fiap.web_service.view.model.response;
 
 public class ProdutoResponse {
 
