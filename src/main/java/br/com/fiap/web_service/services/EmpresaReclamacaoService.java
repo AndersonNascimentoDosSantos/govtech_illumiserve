@@ -54,18 +54,18 @@ public class EmpresaReclamacaoService {
     // create a mapper object
     ModelMapper mapper = new ModelMapper();
 
-    EmpresaReclamacao avaliacao = mapper.map(empresaReclamacaoDto, EmpresaReclamacao.class);
-    avaliacao = empresaReclamacaoRepository.save(avaliacao);
-    empresaReclamacaoDto.setIdEmpresaReclamacao(avaliacao.getIdEmpresaReclamacao());
+    EmpresaReclamacao empresaReclamacao = mapper.map(empresaReclamacaoDto, EmpresaReclamacao.class);
+    empresaReclamacao = empresaReclamacaoRepository.save(empresaReclamacao);
+    empresaReclamacaoDto.setIdEmpresaReclamacao(empresaReclamacao.getIdEmpresaReclamacao());
     return empresaReclamacaoDto;
 
   }
 
-  public EmpresaReclamacaoDTO update(Long id, EmpresaReclamacaoDTO avaliacaoDto) {
-    avaliacaoDto.setIdEmpresaReclamacao(id);
+  public EmpresaReclamacaoDTO update(Long id, EmpresaReclamacaoDTO empresaReclamacaoDTO) {
+    empresaReclamacaoDTO.setIdEmpresaReclamacao(id);
     ModelMapper mapper = new ModelMapper();
-    EmpresaReclamacao avaliacao = mapper.map(avaliacaoDto, EmpresaReclamacao.class);
-    empresaReclamacaoRepository.save(avaliacao);
-    return avaliacaoDto;
+    EmpresaReclamacao empresaReclamacao = mapper.map(empresaReclamacaoDTO, EmpresaReclamacao.class);
+    empresaReclamacaoRepository.save(empresaReclamacao);
+    return empresaReclamacaoDTO;
   }
 }
