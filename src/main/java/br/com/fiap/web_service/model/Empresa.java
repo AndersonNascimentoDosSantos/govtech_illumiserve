@@ -42,8 +42,8 @@ public class Empresa {
 	@OneToMany(mappedBy = "empresa")
 	private List<Reclamacao> reclamacoes;
 
-	public Empresa() {
-	}
+	// public Empresa() {
+	// }
 
 	// getters and setters
 

@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -29,11 +30,11 @@ public class Reclamacao {
 	@Column(name = "id_reclamacao")
 	private Long id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
 	@JoinColumn(name = "id_empresa")
 	private Empresa empresa;
 
@@ -54,9 +55,9 @@ public class Reclamacao {
 	@Column(name = "ds_status", nullable = false)
 	private StatusReclamacao status;
 
-	public Reclamacao() {
-		super();
-		// TODO Auto-generated constructor stub
+	@PrePersist
+	protected void onCreate() {
+		this.dataCriacao = new Date();
 	}
 
 	public Long getId() {

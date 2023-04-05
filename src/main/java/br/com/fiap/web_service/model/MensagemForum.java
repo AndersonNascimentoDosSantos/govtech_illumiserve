@@ -25,11 +25,11 @@ public class MensagemForum {
 	@Column(name = "id_mensagem")
 	private Long idMensagem;
 
-	@ManyToOne
+	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_topico")
 	private TopicoForum topico;
 
-	@ManyToOne
+	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 
@@ -40,10 +40,10 @@ public class MensagemForum {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataPostagem;
 
-	public MensagemForum() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	// public MensagemForum() {
+	// super();
+	// // TODO Auto-generated constructor stub
+	// }
 
 	@PrePersist
 	protected void onCreate() {

@@ -23,12 +23,12 @@ public class Avaliacao {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "avaliacao")
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "id_usuario", nullable = false)
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "id_usuario", nullable = true)
 	private Usuario usuario;
 
-	@ManyToOne
-	@JoinColumn(name = "id_empresa_eletrica", nullable = false)
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "id_empresa_eletrica", nullable = true)
 	private Empresa empresa;
 
 	@Column(name = "ds_nota", nullable = false)
@@ -41,10 +41,10 @@ public class Avaliacao {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataAvaliacao;
 
-	public Avaliacao() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	// public Avaliacao() {
+	// super();
+	// // TODO Auto-generated constructor stub
+	// }
 
 	@PrePersist
 	protected void onCreate() {

@@ -25,7 +25,7 @@ public class Notificacao {
 	@Column(name = "id_notificacao")
 	private Long idNotificacao;
 
-	@ManyToOne
+	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 
@@ -41,10 +41,10 @@ public class Notificacao {
 		this.dataEnvio = new Date();
 	}
 
-	public Notificacao() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	// public Notificacao() {
+	// super();
+	// // TODO Auto-generated constructor stub
+	// }
 
 	public Long getIdNotificacao() {
 		return idNotificacao;

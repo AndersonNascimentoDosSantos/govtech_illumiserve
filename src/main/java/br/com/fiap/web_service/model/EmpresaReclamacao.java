@@ -20,18 +20,18 @@ public class EmpresaReclamacao {
 	@Column(name = "id_empresa_reclamacao")
 	private Long idEmpresaReclamacao;
 
-	@ManyToOne
+	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_empresa")
 	private Empresa empresa;
 
-	@ManyToOne
+	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_reclamacao")
 	private Reclamacao reclamacao;
 
-	public EmpresaReclamacao() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	// public EmpresaReclamacao() {
+	// super();
+	// // TODO Auto-generated constructor stub
+	// }
 
 	public Long getIdEmpresaReclamacao() {
 		return idEmpresaReclamacao;
