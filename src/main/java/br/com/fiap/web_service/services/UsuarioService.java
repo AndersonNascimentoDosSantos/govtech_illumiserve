@@ -24,7 +24,7 @@ public class UsuarioService {
    * 
    * @return lista de Usuarios
    */
-  public List<UsuarioDTO> obterTodos() {
+  public List<UsuarioDTO> findAll() {
 
     List<Usuario> Usuarios = usuarioRepository.findAll();
 
@@ -40,7 +40,7 @@ public class UsuarioService {
    * @param id do Usuario a ser localizado
    * @return retorna um Usuario caso encotrado
    */
-  public Optional<UsuarioDTO> obterPorId(Long id) {
+  public Optional<UsuarioDTO> findById(Long id) {
     // obtemos optional de Usuario por id
     Optional<Usuario> Usuario = usuarioRepository.findById(id);
 
@@ -60,9 +60,10 @@ public class UsuarioService {
    * @param Usuario Usuario a ser adicionado no banco
    * @return retorna o Usuario inserido na lista
    */
-  public UsuarioDTO adicionar(UsuarioDTO UsuarioDto) {
+  public UsuarioDTO create(UsuarioDTO UsuarioDto) {
     // remover o id para consegui fazer o cadastro
     UsuarioDto.setIdUsuario(null);
+    // UsuarioDto.setSenha(UsuarioDto.getSenha());
     // cria um objeto de mapeamento
     ModelMapper mapper = new ModelMapper();
     // converter o nosso UsuarioDTO em um Usuario
@@ -80,7 +81,7 @@ public class UsuarioService {
    * 
    * @param id do objeto a ser removido
    */
-  public void deletar(Long id) {
+  public void deleteById(Long id) {
     Optional<Usuario> Usuario = usuarioRepository.findById(id);
     // se nao existir lança exception
     if (Usuario.isEmpty()) {
@@ -97,7 +98,7 @@ public class UsuarioService {
    * @param Usuario Usuario a ser atualizado
    * @return
    */
-  public UsuarioDTO atualizar(Long id, UsuarioDTO UsuarioDto) {
+  public UsuarioDTO update(Long id, UsuarioDTO UsuarioDto) {
     // passar o id para o UsuarioDto
     UsuarioDto.setIdUsuario(id);
     // criar objeto de mapeamento

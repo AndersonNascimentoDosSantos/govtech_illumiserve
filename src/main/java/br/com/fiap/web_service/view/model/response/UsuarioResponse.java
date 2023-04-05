@@ -1,5 +1,6 @@
 package br.com.fiap.web_service.view.model.response;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -87,9 +88,11 @@ public class UsuarioResponse {
     return BCrypt.checkpw(senha, this.senha);
   }
 
-  public static UsuarioResponse autenticar(String email, String password, EntityManager em) throws Exception {
+  public static UsuarioResponse autenticar(String email, String password,
+      EntityManager em) throws Exception {
     try {
-      UsuarioResponse usuario = em.createNamedQuery("Usuario.findByEmail", UsuarioResponse.class)
+      UsuarioResponse usuario = em.createNamedQuery("Usuario.findByEmail",
+          UsuarioResponse.class)
           .setParameter("email", email)
           .getSingleResult();
       if (usuario.verificaSenha(password)) {
