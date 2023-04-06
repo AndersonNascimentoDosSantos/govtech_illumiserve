@@ -23,12 +23,12 @@ public class MensagemChat {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "msg_seq")
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "id_remetente", nullable = false)
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "id_remetente", nullable = true)
 	private Usuario remetente;
 
-	@ManyToOne
-	@JoinColumn(name = "id_destinatario", nullable = false)
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "id_destinatario", nullable = true)
 	private Empresa destinatario;
 
 	@Column(name = "ds_conteudo", nullable = false, columnDefinition = "CLOB")
@@ -38,10 +38,10 @@ public class MensagemChat {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataEnvio;
 
-	public MensagemChat() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	// public MensagemChat() {
+	// super();
+	// // TODO Auto-generated constructor stub
+	// }
 
 	@PrePersist
 	protected void onCreate() {

@@ -2,7 +2,7 @@ package br.com.fiap.web_service.shared;
 
 import java.util.Date;
 
-public class EmpresaChatDTO {
+public class MensagemChatDTO {
 
   private Long id;
 

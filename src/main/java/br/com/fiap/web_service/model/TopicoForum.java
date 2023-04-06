@@ -33,7 +33,7 @@ public class TopicoForum {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataCriacao;
 
-	@ManyToOne
+	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuarioCriador;
 

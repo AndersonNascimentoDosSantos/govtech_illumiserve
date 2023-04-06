@@ -1,5 +1,6 @@
 package br.com.fiap.web_service.shared;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -32,6 +33,10 @@ public class UsuarioDTO {
 
   public Long getIdUsuario() {
     return idUsuario;
+  }
+
+  public String getSenha() {
+    return senha;
   }
 
   public void setIdUsuario(Long idUsuario) {
@@ -87,9 +92,11 @@ public class UsuarioDTO {
     return BCrypt.checkpw(senha, this.senha);
   }
 
-  public static UsuarioDTO autenticar(String email, String password, EntityManager em) throws Exception {
+  public static UsuarioDTO autenticar(String email, String password,
+      EntityManager em) throws Exception {
     try {
-      UsuarioDTO usuario = em.createNamedQuery("Usuario.findByEmail", UsuarioDTO.class)
+      UsuarioDTO usuario = em.createNamedQuery("Usuario.findByEmail",
+          UsuarioDTO.class)
           .setParameter("email", email)
           .getSingleResult();
       if (usuario.verificaSenha(password)) {

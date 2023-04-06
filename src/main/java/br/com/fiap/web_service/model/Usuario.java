@@ -32,9 +32,7 @@ import br.com.fiap.web_service.Enums.TipoUsuario;
 // :id"),
 //
 // })
-public class Usuario implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Usuario {
 
     @Id
     @SequenceGenerator(name = "usuario", sequenceName = "seq_usuario", allocationSize = 1)
@@ -61,10 +59,10 @@ public class Usuario implements Serializable {
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Avaliacao> avaliacoes;
 
-    //
-    public Usuario() {
-        // default constructor
-    }
+    // //
+    // public Usuario() {
+    // // default constructor
+    // }
 
     @Override
     public String toString() {
@@ -73,12 +71,13 @@ public class Usuario implements Serializable {
                 + ", tipoUsuario=" + this.getTipoUsuario() + "]";
     }
 
-    public Usuario(String nome, String email, String senha, TipoUsuario tipoUsuario) {
-        this.nome = nome;
-        this.email = email;
-        this.tipoUsuario = tipoUsuario;
-        setSenha(senha);
-    }
+    // public Usuario(String nome, String email, String senha, TipoUsuario
+    // tipoUsuario) {
+    // this.nome = nome;
+    // this.email = email;
+    // this.tipoUsuario = tipoUsuario;
+    // setSenha(senha);
+    // }
 
     // @Override
     // public String toString() {
@@ -87,6 +86,10 @@ public class Usuario implements Serializable {
     // + ", tipoUsuario=" + tipoUsuario + ", reclamacoes=" + reclamacoes + ",
     // avaliacoes=" + avaliacoes + "]";
     // }
+
+    public String getSenha() {
+        return senha;
+    }
 
     public Long getIdUsuario() {
         return idUsuario;

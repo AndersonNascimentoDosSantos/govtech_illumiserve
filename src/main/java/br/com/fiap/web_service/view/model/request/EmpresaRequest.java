@@ -26,6 +26,10 @@ public class EmpresaRequest {
     this.nome = nome;
   }
 
+  public String getSenha() {
+    return senha;
+  }
+
   public String getCnpj() {
     return cnpj;
   }

@@ -24,16 +24,20 @@ public class Empresa {
 	@Column(name = "id_empresa")
 	private Long idEmpresa;
 
-	@Column(name = "nom_nome")
+	public String getSenha() {
+		return senha;
+	}
+
+	@Column(name = "nom_nome", nullable = false)
 	private String nome;
 
-	@Column(name = "ds_cnpj")
+	@Column(name = "ds_cnpj", nullable = false)
 	private String cnpj;
 
-	@Column(name = "ds_email")
+	@Column(name = "ds_email", nullable = false, unique = true)
 	private String email;
 
-	@Column(name = "ds_senha")
+	@Column(name = "ds_senha", nullable = false)
 	private String senha;
 
 	@OneToMany(mappedBy = "empresa")
@@ -42,8 +46,8 @@ public class Empresa {
 	@OneToMany(mappedBy = "empresa")
 	private List<Reclamacao> reclamacoes;
 
-	public Empresa() {
-	}
+	// public Empresa() {
+	// }
 
 	// getters and setters
 

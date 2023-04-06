@@ -23,12 +23,12 @@ public class PostagemRedeSocial {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_rede")
 	private Long id;
 
-	@ManyToOne
+	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_rede_social", nullable = false)
 	private RedeSocial redeSocial;
 
-	@ManyToOne
-	@JoinColumn(name = "id_usuario", nullable = false)
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "id_usuario", nullable = true)
 	private Usuario usuario;
 
 	@Column(name = "ds_messagem", nullable = false, columnDefinition = "CLOB")
@@ -38,10 +38,10 @@ public class PostagemRedeSocial {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataPostagem;
 
-	public PostagemRedeSocial() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	// public PostagemRedeSocial() {
+	// super();
+	// // TODO Auto-generated constructor stub
+	// }
 
 	@PrePersist
 	protected void onCreate() {
