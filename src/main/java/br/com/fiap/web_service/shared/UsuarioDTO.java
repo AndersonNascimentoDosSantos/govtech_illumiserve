@@ -6,6 +6,7 @@ import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 
 import br.com.fiap.web_service.Enums.TipoUsuario;
+import br.com.fiap.web_service.model.exception.ResourceNotFoundException;
 import jakarta.persistence.EntityManager;
 
 public class UsuarioDTO {

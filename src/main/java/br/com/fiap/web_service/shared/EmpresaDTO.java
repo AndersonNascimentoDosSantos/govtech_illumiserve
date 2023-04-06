@@ -77,4 +77,8 @@ public class EmpresaDTO {
     this.reclamacoes = reclamacoes;
   }
 
+  public String getSenha() {
+    return senha;
+  }
+
 }
