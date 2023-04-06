@@ -12,7 +12,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
-import org.mindrot.jbcrypt.BCrypt;
+
 
 @Entity
 @Table(name = "tbl_empresas_eletricas")
@@ -24,10 +24,6 @@ public class Empresa {
 	@Column(name = "id_empresa")
 	private Long idEmpresa;
 
-	public String getSenha() {
-		return senha;
-	}
-
 	@Column(name = "nom_nome", nullable = false)
 	private String nome;
 
@@ -36,9 +32,6 @@ public class Empresa {
 
 	@Column(name = "ds_email", nullable = false, unique = true)
 	private String email;
-
-	@Column(name = "ds_senha", nullable = false)
-	private String senha;
 
 	@OneToMany(mappedBy = "empresa")
 	private List<Avaliacao> avaliacoes;
@@ -81,15 +74,6 @@ public class Empresa {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public void setSenha(String senha) {
-		String hash = BCrypt.hashpw(senha, BCrypt.gensalt());
-		this.senha = hash;
-	}
-
-	public boolean verificaSenha(String senha) {
-		return BCrypt.checkpw(senha, this.senha);
 	}
 
 	public List<Avaliacao> getAvaliacoes() {

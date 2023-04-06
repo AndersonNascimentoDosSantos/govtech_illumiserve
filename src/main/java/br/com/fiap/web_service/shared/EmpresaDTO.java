@@ -14,8 +14,6 @@ public class EmpresaDTO {
 
   private String email;
 
-  private String senha;
-
   private List<AvaliacaoDTO> avaliacoes;
 
   private List<ReclamacaoDTO> reclamacoes;
@@ -52,15 +50,6 @@ public class EmpresaDTO {
     this.email = email;
   }
 
-  public void setSenha(String senha) {
-    String hash = BCrypt.hashpw(senha, BCrypt.gensalt());
-    this.senha = hash;
-  }
-
-  public boolean verificaSenha(String senha) {
-    return BCrypt.checkpw(senha, this.senha);
-  }
-
   public List<AvaliacaoDTO> getAvaliacoes() {
     return avaliacoes;
   }
@@ -75,10 +64,6 @@ public class EmpresaDTO {
 
   public void setReclamacoes(List<ReclamacaoDTO> reclamacoes) {
     this.reclamacoes = reclamacoes;
-  }
-
-  public String getSenha() {
-    return senha;
   }
 
 }
