@@ -1,30 +1,40 @@
-package br.com.fiap.web_service.view.model.request;
+package br.com.fiap.web_service.view.model.response;
 
 import java.util.Date;
 
-public class EmpresaChatRequest {
+public class MensagemChatResponse {
 
-  private UsuarioRequest remetente;
+  private Long id;
 
-  private EmpresaRequest destinatario;
+  private UsuarioResponse remetente;
+
+  private EmpresaResponse destinatario;
 
   private String conteudo;
 
   private Date dataEnvio;
 
-  public UsuarioRequest getRemetente() {
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public UsuarioResponse getRemetente() {
     return remetente;
   }
 
-  public void setRemetente(UsuarioRequest remetente) {
+  public void setRemetente(UsuarioResponse remetente) {
     this.remetente = remetente;
   }
 
-  public EmpresaRequest getDestinatario() {
+  public EmpresaResponse getDestinatario() {
     return destinatario;
   }
 
-  public void setDestinatario(EmpresaRequest destinatario) {
+  public void setDestinatario(EmpresaResponse destinatario) {
     this.destinatario = destinatario;
   }
 
