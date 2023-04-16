@@ -8,6 +8,26 @@ public class RedeSocialDTO {
 
   private String urlPagina;
 
+  private UsuarioDTO usuario;
+
+  private ReclamacaoDTO reclamacao;
+
+  public UsuarioDTO getUsuario() {
+    return usuario;
+  }
+
+  public void setUsuario(UsuarioDTO usuario) {
+    this.usuario = usuario;
+  }
+
+  public ReclamacaoDTO getReclamacao() {
+    return reclamacao;
+  }
+
+  public void setReclamacao(ReclamacaoDTO reclamacao) {
+    this.reclamacao = reclamacao;
+  }
+
   public Long getId() {
     return id;
   }

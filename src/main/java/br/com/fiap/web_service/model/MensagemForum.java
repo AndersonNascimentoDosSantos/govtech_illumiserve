@@ -2,6 +2,9 @@ package br.com.fiap.web_service.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,32 +27,23 @@ public class MensagemForum {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "forum")
 	@Column(name = "id_mensagem")
 	private Long idMensagem;
-
-	@ManyToOne(optional = true)
+	// #verified
+	@ManyToOne()
 	@JoinColumn(name = "id_topico")
+	@JsonBackReference("topico_mensagemForum")
 	private TopicoForum topico;
 
-	@ManyToOne(optional = true)
-	@JoinColumn(name = "id_usuario")
-	private Usuario usuario;
+	// #verified
+	// @ManyToOne()
+	// @JoinColumn(name = "id_usuario")
+	// @JsonBackReference("usuario_mensagemForum")
+	// private Usuario usuario;
 
-	@Column(name = "ds_conteudo", columnDefinition = "CLOB")
+	@Column(name = "ds_conteudo", columnDefinition = "text")
 	private String conteudo;
 
-	@Column(name = "dt_data_postagem")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "dt_data_postagem", updatable = false, nullable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date dataPostagem;
-
-	// public MensagemForum() {
-	// super();
-	// // TODO Auto-generated constructor stub
-	// }
-
-	@PrePersist
-	protected void onCreate() {
-		this.dataPostagem = new Date();
-	}
-	// getters and setters
 
 	public Long getIdMensagem() {
 		return idMensagem;
@@ -67,14 +61,6 @@ public class MensagemForum {
 		this.topico = topico;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
 	public String getConteudo() {
 		return conteudo;
 	}
@@ -90,4 +76,10 @@ public class MensagemForum {
 	public void setDataPostagem(Date dataPostagem) {
 		this.dataPostagem = dataPostagem;
 	}
+
+	@PrePersist
+	protected void onCreate() {
+		this.dataPostagem = new Date();
+	}
+	// getters and setters
 }

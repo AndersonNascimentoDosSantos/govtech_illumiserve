@@ -14,6 +14,8 @@ public class TopicoForumDTO {
 
   private UsuarioDTO usuarioCriador;
 
+  private MensagemForumDTO mensagemForum;
+
   public Long getIdTopico() {
     return idTopico;
   }
@@ -52,6 +54,14 @@ public class TopicoForumDTO {
 
   public void setUsuarioCriador(UsuarioDTO usuarioCriador) {
     this.usuarioCriador = usuarioCriador;
+  }
+
+  public MensagemForumDTO getMensagemForum() {
+    return mensagemForum;
+  }
+
+  public void setMensagemForum(MensagemForumDTO mensagemForum) {
+    this.mensagemForum = mensagemForum;
   }
 
 }

@@ -12,29 +12,27 @@ import br.com.fiap.web_service.model.MensagemChat;
 import br.com.fiap.web_service.model.exception.ResourceNotFoundException;
 import br.com.fiap.web_service.repository.MensagemChatRepository;
 
-import br.com.fiap.web_service.shared.MensagemChatDTO;
-
 @Service
 public class MensagemChatService {
   @Autowired
   private MensagemChatRepository mensagemChatRepository;
 
-  public List<MensagemChatDTO> findAll() {
+  public List<MensagemChat> findAll() {
     // get all Avaliations
     List<MensagemChat> mensagensChat = mensagemChatRepository.findAll();
     return mensagensChat.stream().map(mensagemChat -> new ModelMapper()
-        .map(mensagemChat, MensagemChatDTO.class))
+        .map(mensagemChat, MensagemChat.class))
         .collect(Collectors.toList());
 
   }
 
-  public Optional<MensagemChatDTO> findById(Long id) {
+  public Optional<MensagemChat> findById(Long id) {
     Optional<MensagemChat> mensagemChat = mensagemChatRepository.findById(id);
 
     if (mensagemChat.isEmpty()) {
       throw new ResourceNotFoundException("a Mensagem com o id: " + id + " não encontrada");
     }
-    return Optional.of(new ModelMapper().map(mensagemChat.get(), MensagemChatDTO.class));
+    return Optional.of(new ModelMapper().map(mensagemChat.get(), MensagemChat.class));
   }
 
   public void deleteById(Long id) {
@@ -48,25 +46,25 @@ public class MensagemChatService {
 
   }
 
-  public MensagemChatDTO create(MensagemChatDTO mensagemChatDTO) {
+  public MensagemChat create(MensagemChat mensagemChat) {
 
     // delete the id from the object
-    mensagemChatDTO.setId(null);
+    mensagemChat.setId(null);
     // create a mapper object
     ModelMapper mapper = new ModelMapper();
 
-    MensagemChat mensagemChat = mapper.map(mensagemChatDTO, MensagemChat.class);
+    // MensagemChat mensagemChat = mapper.map(mensagemChat, MensagemChat.class);
     mensagemChat = mensagemChatRepository.save(mensagemChat);
-    mensagemChatDTO.setId(mensagemChat.getId());
-    return mensagemChatDTO;
+    mensagemChat.setId(mensagemChat.getId());
+    return mensagemChat;
 
   }
 
-  public MensagemChatDTO update(Long id, MensagemChatDTO mensagemChatDTO) {
-    mensagemChatDTO.setId(id);
+  public MensagemChat update(Long id, MensagemChat mensagemChat) {
+    mensagemChat.setId(id);
     ModelMapper mapper = new ModelMapper();
-    MensagemChat mensagemChat = mapper.map(mensagemChatDTO, MensagemChat.class);
+    // MensagemChat mensagemChat = mapper.map(mensagemChat, MensagemChat.class);
     mensagemChatRepository.save(mensagemChat);
-    return mensagemChatDTO;
+    return mensagemChat;
   }
 }

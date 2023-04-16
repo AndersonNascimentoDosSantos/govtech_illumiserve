@@ -11,29 +11,28 @@ import org.springframework.stereotype.Service;
 import br.com.fiap.web_service.model.Empresa;
 import br.com.fiap.web_service.model.exception.ResourceNotFoundException;
 import br.com.fiap.web_service.repository.EmpresaRepository;
-import br.com.fiap.web_service.shared.EmpresaDTO;
 
 @Service
 public class EmpresaService {
   @Autowired
   private EmpresaRepository empresaRepository;
 
-  public List<EmpresaDTO> findAll() {
+  public List<Empresa> findAll() {
     // get all Avaliations
     List<Empresa> empresas = empresaRepository.findAll();
     return empresas.stream().map(empresa -> new ModelMapper()
-        .map(empresa, EmpresaDTO.class))
+        .map(empresa, Empresa.class))
         .collect(Collectors.toList());
 
   }
 
-  public Optional<EmpresaDTO> findById(Long id) {
+  public Optional<Empresa> findById(Long id) {
     Optional<Empresa> empresa = empresaRepository.findById(id);
 
     if (empresa.isEmpty()) {
       throw new ResourceNotFoundException("a reclamação com o id: " + id + " não encontrada");
     }
-    return Optional.of(new ModelMapper().map(empresa.get(), EmpresaDTO.class));
+    return Optional.of(new ModelMapper().map(empresa.get(), Empresa.class));
   }
 
   public void deleteById(Long id) {
@@ -47,25 +46,25 @@ public class EmpresaService {
 
   }
 
-  public EmpresaDTO create(EmpresaDTO empresaDto) {
+  public Empresa create(Empresa empresa) {
 
     // delete the id from the object
-    empresaDto.setIdEmpresa(null);
+    empresa.setIdEmpresa(null);
     // create a mapper object
     ModelMapper mapper = new ModelMapper();
 
-    Empresa empresa = mapper.map(empresaDto, Empresa.class);
+    // Empresa empresa = mapper.map(empresa, Empresa.class);
     empresa = empresaRepository.save(empresa);
-    empresaDto.setIdEmpresa(empresa.getIdEmpresa());
-    return empresaDto;
+    empresa.setIdEmpresa(empresa.getIdEmpresa());
+    return empresa;
 
   }
 
-  public EmpresaDTO update(Long id, EmpresaDTO empresaDto) {
-    empresaDto.setIdEmpresa(id);
+  public Empresa update(Long id, Empresa empresa) {
+    empresa.setIdEmpresa(id);
     ModelMapper mapper = new ModelMapper();
-    Empresa empresa = mapper.map(empresaDto, Empresa.class);
+    // Empresa empresa = mapper.map(empresa, Empresa.class);
     empresaRepository.save(empresa);
-    return empresaDto;
+    return empresa;
   }
 }

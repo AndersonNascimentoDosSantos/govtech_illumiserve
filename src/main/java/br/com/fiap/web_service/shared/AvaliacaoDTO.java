@@ -3,7 +3,7 @@ package br.com.fiap.web_service.shared;
 import java.util.Date;
 
 public class AvaliacaoDTO {
-  // #region atributes
+
   private Long id;
 
   private UsuarioDTO usuario;
@@ -16,8 +16,6 @@ public class AvaliacaoDTO {
 
   private Date dataAvaliacao;
 
-  // #endregion
-  // #region getters and setters
   public Long getId() {
     return id;
   }
@@ -38,8 +36,8 @@ public class AvaliacaoDTO {
     return empresa;
   }
 
-  public void setEmpresa(EmpresaDTO empresaDto) {
-    this.empresa = empresaDto;
+  public void setEmpresa(EmpresaDTO empresa) {
+    this.empresa = empresa;
   }
 
   public Integer getNota() {
@@ -65,5 +63,5 @@ public class AvaliacaoDTO {
   public void setDataAvaliacao(Date dataAvaliacao) {
     this.dataAvaliacao = dataAvaliacao;
   }
-  // #endregion
+
 }

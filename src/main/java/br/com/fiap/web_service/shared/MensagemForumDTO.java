@@ -14,8 +14,6 @@ public class MensagemForumDTO {
 
   private Date dataPostagem;
 
-  // getters and setters
-
   public Long getIdMensagem() {
     return idMensagem;
   }

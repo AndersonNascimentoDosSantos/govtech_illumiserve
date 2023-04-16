@@ -1,6 +1,10 @@
 package br.com.fiap.web_service.model;
 
 import java.util.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,11 +13,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "tbl_topico_forum")
@@ -26,21 +28,22 @@ public class TopicoForum {
 	private Long idTopico;
 	@Column(name = "ds_titulo", nullable = false)
 	private String titulo;
-	@Column(name = "dt_descricao", nullable = false, columnDefinition = "CLOB")
+	@Column(name = "dt_descricao", nullable = false, columnDefinition = "text")
 	private String descricao;
 
-	@Column(name = "dt_data_criacao", nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "dt_data_criacao", updatable = false, nullable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date dataCriacao;
 
-	@ManyToOne(optional = true)
-	@JoinColumn(name = "id_usuario")
+	// #verified
+	@ManyToOne()
+	@JoinColumn(name = "id_usuario", nullable = false)
+	@JsonBackReference("usuario_topicoForum")
 	private Usuario usuarioCriador;
 
-	@PrePersist
-	protected void onCreate() {
-		this.dataCriacao = new Date();
-	}
+	// #verified
+	@OneToMany(mappedBy = "topico")
+	@JsonManagedReference("topico_mensagemForum")
+	private List<MensagemForum> mensagemForum;
 
 	public Long getIdTopico() {
 		return idTopico;
@@ -80,6 +83,14 @@ public class TopicoForum {
 
 	public void setUsuarioCriador(Usuario usuarioCriador) {
 		this.usuarioCriador = usuarioCriador;
+	}
+
+	public List<MensagemForum> getMensagemForum() {
+		return mensagemForum;
+	}
+
+	public void setMensagemForum(List<MensagemForum> mensagemForum) {
+		this.mensagemForum = mensagemForum;
 	}
 
 }

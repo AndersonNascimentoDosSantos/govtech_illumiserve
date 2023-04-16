@@ -19,11 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.fiap.web_service.model.Empresa;
 import br.com.fiap.web_service.services.EmpresaService;
-
-import br.com.fiap.web_service.shared.EmpresaDTO;
-import br.com.fiap.web_service.view.model.request.EmpresaRequest;
-import br.com.fiap.web_service.view.model.response.EmpresaResponse;
 
 @RestController
 @RequestMapping("/api/empresas")
@@ -32,31 +29,31 @@ public class EmpresaController {
   private EmpresaService empresaService;
 
   @GetMapping
-  public ResponseEntity<List<EmpresaResponse>> obterTodos() {
-    List<EmpresaDTO> empresas = empresaService.findAll();
+  public ResponseEntity<List<Empresa>> obterTodos() {
+    List<Empresa> empresas = empresaService.findAll();
     ModelMapper mapper = new ModelMapper();
-    List<EmpresaResponse> resposta = empresas.stream().map(empresa -> mapper
-        .map(empresa, EmpresaResponse.class))
+    List<Empresa> resposta = empresas.stream().map(empresa -> mapper
+        .map(empresa, Empresa.class))
         .collect(Collectors.toList());
     return new ResponseEntity<>(resposta, HttpStatus.OK);
   }
 
   @PostMapping
-  public ResponseEntity<EmpresaResponse> adicionar(@RequestBody EmpresaRequest empresaReq) {
+  public ResponseEntity<Empresa> adicionar(@RequestBody Empresa empresaReq) {
     ModelMapper mapper = new ModelMapper();
 
-    EmpresaDTO empresaDto = mapper.map(empresaReq, EmpresaDTO.class);
+    Empresa empresa = mapper.map(empresaReq, Empresa.class);
 
-    empresaDto = empresaService.create(empresaDto);
+    empresa = empresaService.create(empresa);
 
-    return new ResponseEntity<>(mapper.map(empresaDto, EmpresaResponse.class), HttpStatus.CREATED);
+    return new ResponseEntity<>(mapper.map(empresa, Empresa.class), HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Optional<EmpresaResponse>> obterPorId(@PathVariable Long id) {
+  public ResponseEntity<Optional<Empresa>> obterPorId(@PathVariable Long id) {
 
-    Optional<EmpresaDTO> dto = empresaService.findById(id);
-    return new ResponseEntity<>(Optional.of(new ModelMapper().map(dto.get(), EmpresaResponse.class)), HttpStatus.OK);
+    Optional<Empresa> dto = empresaService.findById(id);
+    return new ResponseEntity<>(Optional.of(new ModelMapper().map(dto.get(), Empresa.class)), HttpStatus.OK);
 
   }
 
@@ -67,12 +64,12 @@ public class EmpresaController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<EmpresaResponse> atualizar(@RequestBody EmpresaRequest empresaReq,
+  public ResponseEntity<Empresa> atualizar(@RequestBody Empresa empresaReq,
       @PathVariable Long id) {
     ModelMapper mapper = new ModelMapper();
-    EmpresaDTO EmpresaDto = mapper.map(empresaReq, EmpresaDTO.class);
-    EmpresaDto = empresaService.update(id, EmpresaDto);
+    Empresa Empresa = mapper.map(empresaReq, Empresa.class);
+    Empresa = empresaService.update(id, Empresa);
     return new ResponseEntity<>(
-        mapper.map(EmpresaDto, EmpresaResponse.class), HttpStatus.OK);
+        mapper.map(Empresa, Empresa.class), HttpStatus.OK);
   }
 }

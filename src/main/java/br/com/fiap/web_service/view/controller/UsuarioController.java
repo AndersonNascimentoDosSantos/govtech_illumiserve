@@ -19,11 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.fiap.web_service.model.Usuario;
 import br.com.fiap.web_service.services.UsuarioService;
-import br.com.fiap.web_service.shared.UsuarioDTO;
-
-import br.com.fiap.web_service.view.model.request.UsuarioRequest;
-import br.com.fiap.web_service.view.model.response.UsuarioResponse;
 
 @RestController
 @RequestMapping("/api/usuarios")
@@ -32,31 +29,31 @@ public class UsuarioController {
   private UsuarioService usuarioService;
 
   @GetMapping
-  public ResponseEntity<List<UsuarioResponse>> obterTodos() {
-    List<UsuarioDTO> usuarios = usuarioService.findAll();
+  public ResponseEntity<List<Usuario>> obterTodos() {
+    List<Usuario> usuarios = usuarioService.findAll();
     ModelMapper mapper = new ModelMapper();
-    List<UsuarioResponse> resposta = usuarios.stream().map(usuarioDto -> mapper
-        .map(usuarioDto, UsuarioResponse.class))
+    List<Usuario> resposta = usuarios.stream().map(usuario -> mapper
+        .map(usuario, Usuario.class))
         .collect(Collectors.toList());
     return new ResponseEntity<>(resposta, HttpStatus.OK);
   }
 
   @PostMapping
-  public ResponseEntity<UsuarioResponse> adicionar(@RequestBody UsuarioRequest usuarioReq) {
+  public ResponseEntity<Usuario> adicionar(@RequestBody Usuario usuarioReq) {
     ModelMapper mapper = new ModelMapper();
 
-    UsuarioDTO usuarioDto = mapper.map(usuarioReq, UsuarioDTO.class);
+    Usuario usuario = mapper.map(usuarioReq, Usuario.class);
 
-    usuarioDto = usuarioService.create(usuarioDto);
+    usuario = usuarioService.create(usuario);
 
-    return new ResponseEntity<>(mapper.map(usuarioDto, UsuarioResponse.class), HttpStatus.CREATED);
+    return new ResponseEntity<>(mapper.map(usuario, Usuario.class), HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Optional<UsuarioResponse>> obterPorId(@PathVariable Long id) {
+  public ResponseEntity<Optional<Usuario>> obterPorId(@PathVariable Long id) {
 
-    Optional<UsuarioDTO> dto = usuarioService.findById(id);
-    return new ResponseEntity<>(Optional.of(new ModelMapper().map(dto.get(), UsuarioResponse.class)), HttpStatus.OK);
+    Optional<Usuario> dto = usuarioService.findById(id);
+    return new ResponseEntity<>(Optional.of(new ModelMapper().map(dto.get(), Usuario.class)), HttpStatus.OK);
 
   }
 
@@ -67,11 +64,11 @@ public class UsuarioController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<UsuarioResponse> atualizar(@RequestBody UsuarioRequest usuarioReq, @PathVariable Long id) {
+  public ResponseEntity<Usuario> atualizar(@RequestBody Usuario usuarioReq, @PathVariable Long id) {
     ModelMapper mapper = new ModelMapper();
-    UsuarioDTO UsuarioDTO = mapper.map(usuarioReq, UsuarioDTO.class);
-    UsuarioDTO = usuarioService.update(id, UsuarioDTO);
+    Usuario usuario = mapper.map(usuarioReq, Usuario.class);
+    usuario = usuarioService.update(id, usuarioReq);
     return new ResponseEntity<>(
-        mapper.map(UsuarioDTO, UsuarioResponse.class), HttpStatus.OK);
+        mapper.map(usuario, Usuario.class), HttpStatus.OK);
   }
 }

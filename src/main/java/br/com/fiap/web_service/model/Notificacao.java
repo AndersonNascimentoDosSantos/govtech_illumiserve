@@ -2,6 +2,9 @@ package br.com.fiap.web_service.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,30 +28,27 @@ public class Notificacao {
 	@Column(name = "id_notificacao")
 	private Long idNotificacao;
 
-	@ManyToOne(optional = true)
+	// #verified
+	@ManyToOne()
 	@JoinColumn(name = "id_usuario")
+	@JsonBackReference("usuario_notificacao")
 	private Usuario usuario;
 
-	@Column(name = "ds_mensagem", columnDefinition = "CLOB")
+	@Column(name = "ds_mensagem", columnDefinition = "text")
 	private String mensagem;
 
-	@Column(name = "dt_data_envio", nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "dt_data_envio", updatable = false, nullable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+
 	private Date dataEnvio;
 
-	@PrePersist
-	protected void onCreate() {
-		this.dataEnvio = new Date();
+	public Long getIdNotificacao() {
+		return idNotificacao;
 	}
 
 	// public Notificacao() {
 	// super();
 	// // TODO Auto-generated constructor stub
 	// }
-
-	public Long getIdNotificacao() {
-		return idNotificacao;
-	}
 
 	public void setIdNotificacao(Long idNotificacao) {
 		this.idNotificacao = idNotificacao;

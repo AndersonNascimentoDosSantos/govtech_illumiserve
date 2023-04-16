@@ -2,8 +2,12 @@ package br.com.fiap.web_service.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,33 +27,33 @@ public class Avaliacao {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "avaliacao")
 	private Long id;
 
-	@ManyToOne(optional = true)
-	@JoinColumn(name = "id_usuario", nullable = true)
+	@ManyToOne()
+	@JoinColumn(name = "id_usuario", nullable = false)
+
+	@JsonBackReference("usuario_avaliacoes")
 	private Usuario usuario;
 
-	@ManyToOne(optional = true)
-	@JoinColumn(name = "id_empresa_eletrica", nullable = true)
+	@ManyToOne()
+	@JoinColumn(name = "id_empresa_eletrica", nullable = false)
+	@JsonBackReference("empresa_avaliacoes")
 	private Empresa empresa;
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
 
 	@Column(name = "ds_nota", nullable = false)
 	private Integer nota;
 
-	@Column(name = "ds_comentario", columnDefinition = "CLOB")
+	@Column(name = "ds_comentario", columnDefinition = "text", nullable = false)
 	private String comentario;
 
-	@Column(name = "dt_data_avaliacao", nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "dt_data_avaliacao", updatable = false, nullable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date dataAvaliacao;
-
-	// public Avaliacao() {
-	// super();
-	// // TODO Auto-generated constructor stub
-	// }
-
-	@PrePersist
-	protected void onCreate() {
-		this.dataAvaliacao = new Date();
-	}
 
 	public Long getId() {
 		return id;
@@ -65,14 +69,6 @@ public class Avaliacao {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
 	}
 
 	public Integer getNota() {

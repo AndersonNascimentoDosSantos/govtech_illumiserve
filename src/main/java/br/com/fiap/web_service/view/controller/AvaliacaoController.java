@@ -19,11 +19,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.fiap.web_service.model.Avaliacao;
+import br.com.fiap.web_service.model.Empresa;
+import br.com.fiap.web_service.model.Usuario;
 import br.com.fiap.web_service.services.AvaliacaoService;
-
-import br.com.fiap.web_service.shared.AvaliacaoDTO;
-import br.com.fiap.web_service.view.model.request.AvaliacaoRequest;
-import br.com.fiap.web_service.view.model.response.AvaliacaoResponse;
 
 @RestController
 @RequestMapping("/api/avaliacoes")
@@ -32,31 +31,52 @@ public class AvaliacaoController {
   private AvaliacaoService avaliacaoService;
 
   @GetMapping
-  public ResponseEntity<List<AvaliacaoResponse>> obterTodos() {
-    List<AvaliacaoDTO> avaliacoes = avaliacaoService.findAll();
+  public ResponseEntity<List<Avaliacao>> obterTodos() {
+    List<Avaliacao> avaliacoes = avaliacaoService.findAll();
     ModelMapper mapper = new ModelMapper();
-    List<AvaliacaoResponse> resposta = avaliacoes.stream().map(avaliacao -> mapper
-        .map(avaliacao, AvaliacaoResponse.class))
+    List<Avaliacao> resposta = avaliacoes.stream().map(avaliacao -> mapper
+        .map(avaliacao, Avaliacao.class))
         .collect(Collectors.toList());
     return new ResponseEntity<>(resposta, HttpStatus.OK);
   }
 
-  @PostMapping
-  public ResponseEntity<AvaliacaoResponse> adicionar(@RequestBody AvaliacaoRequest avaliacaoReq) {
-    ModelMapper mapper = new ModelMapper();
+  // @PostMapping
+  // public ResponseEntity<Avaliacao> adicionar(@RequestBody
+  // Avaliacao avaliacaoReq) {
+  // ModelMapper mapper = new ModelMapper();
 
-    AvaliacaoDTO avaliacaoDto = mapper.map(avaliacaoReq, AvaliacaoDTO.class);
+  // Avaliacao avaliacao = mapper.map(avaliacaoReq, Avaliacao.class);
 
-    avaliacaoDto = avaliacaoService.create(avaliacaoDto);
+  // avaliacao = avaliacaoService.create(avaliacao);
 
-    return new ResponseEntity<>(mapper.map(avaliacaoDto, AvaliacaoResponse.class), HttpStatus.CREATED);
+  // return new ResponseEntity<>(mapper.map(avaliacao,
+  // Avaliacao.class), HttpStatus.CREATED);
+  // }
+  @PostMapping("/{idUsuario}/{idEmpresa}")
+  public ResponseEntity<Avaliacao> createAvaliacao(@RequestBody Avaliacao avaliacao,
+      @PathVariable Long idUsuario, @PathVariable Long idEmpresa) {
+    ModelMapper modelMapper = new ModelMapper();
+    Usuario usuario = new Usuario();
+    Empresa empresa = new Empresa();
+    usuario.setIdUsuario(idUsuario);
+    empresa.setIdEmpresa(idEmpresa);
+    // Avaliacao avaliacao = modelMapper.map(avaliacao, Avaliacao.class);
+
+    avaliacao.setUsuario(usuario);
+    avaliacao.setEmpresa(empresa);
+    Avaliacao createdAvaliacao = avaliacaoService.create(avaliacao);
+
+    // Avaliacao avaliacao = modelMapper.map(createdAvaliacao, Avaliacao.class);
+
+    return new ResponseEntity<>(createdAvaliacao, HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Optional<AvaliacaoResponse>> obterPorId(@PathVariable Long id) {
+  public ResponseEntity<Optional<Avaliacao>> obterPorId(@PathVariable Long id) {
 
-    Optional<AvaliacaoDTO> dto = avaliacaoService.findById(id);
-    return new ResponseEntity<>(Optional.of(new ModelMapper().map(dto.get(), AvaliacaoResponse.class)), HttpStatus.OK);
+    Optional<Avaliacao> avaliacao = avaliacaoService.findById(id);
+    return new ResponseEntity<>(Optional.of(new ModelMapper().map(avaliacao.get(), Avaliacao.class)),
+        HttpStatus.OK);
 
   }
 
@@ -67,12 +87,12 @@ public class AvaliacaoController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<AvaliacaoResponse> atualizar(@RequestBody AvaliacaoRequest avaliacaoReq,
+  public ResponseEntity<Avaliacao> atualizar(@RequestBody Avaliacao avaliacaoReq,
       @PathVariable Long id) {
     ModelMapper mapper = new ModelMapper();
-    AvaliacaoDTO avaliacaoDto = mapper.map(avaliacaoReq, AvaliacaoDTO.class);
-    avaliacaoDto = avaliacaoService.update(id, avaliacaoDto);
+    Avaliacao avaliacao = mapper.map(avaliacaoReq, Avaliacao.class);
+    avaliacao = avaliacaoService.update(id, avaliacao);
     return new ResponseEntity<>(
-        mapper.map(avaliacaoDto, AvaliacaoResponse.class), HttpStatus.OK);
+        mapper.map(avaliacao, Avaliacao.class), HttpStatus.OK);
   }
 }

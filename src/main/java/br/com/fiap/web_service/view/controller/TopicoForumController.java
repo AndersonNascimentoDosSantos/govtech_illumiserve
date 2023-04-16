@@ -19,44 +19,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.fiap.web_service.model.TopicoForum;
 import br.com.fiap.web_service.services.TopicoForumService;
-import br.com.fiap.web_service.shared.TopicoForumDTO;
-import br.com.fiap.web_service.view.model.request.TopicoForumRequest;
-import br.com.fiap.web_service.view.model.response.TopicoForumResponse;
 
 @RestController
 @RequestMapping("/api/topicos")
-public class TopicoForumController{
+public class TopicoForumController {
   @Autowired
-  private  TopicoForumService topicoForumService;
+  private TopicoForumService topicoForumService;
 
   @GetMapping
-  public ResponseEntity<List<TopicoForumResponse>> obterTodos() {
-    List<TopicoForumDTO> topicos = topicoForumService.findAll();
+  public ResponseEntity<List<TopicoForum>> obterTodos() {
+    List<TopicoForum> topicos = topicoForumService.findAll();
     ModelMapper mapper = new ModelMapper();
-    List<TopicoForumResponse> resposta = topicos.stream().map(topicoForumDto -> mapper
-        .map(topicoForumDto, TopicoForumResponse.class))
+    List<TopicoForum> resposta = topicos.stream().map(topicoForum -> mapper
+        .map(topicoForum, TopicoForum.class))
         .collect(Collectors.toList());
     return new ResponseEntity<>(resposta, HttpStatus.OK);
   }
 
   @PostMapping
-  public ResponseEntity<TopicoForumResponse> adicionar(@RequestBody TopicoForumRequest topicoForumRequest) {
+  public ResponseEntity<TopicoForum> adicionar(@RequestBody TopicoForum topicoForumReq) {
     ModelMapper mapper = new ModelMapper();
 
-   TopicoForumDTO topicoForumDto = mapper.map(topicoForumRequest, TopicoForumDTO.class);
+    TopicoForum topicoForum = mapper.map(topicoForumReq, TopicoForum.class);
 
-    topicoForumDto = topicoForumService.create(topicoForumDto);
+    topicoForum = topicoForumService.create(topicoForum);
 
-    return new ResponseEntity<>(mapper.map(topicoForumDto, TopicoForumResponse.class), HttpStatus.CREATED);
+    return new ResponseEntity<>(mapper.map(topicoForum, TopicoForum.class), HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Optional<TopicoForumResponse>> obterPorId(@PathVariable Long id) {
+  public ResponseEntity<Optional<TopicoForum>> obterPorId(@PathVariable Long id) {
 
-    Optional<TopicoForumDTO> dto = topicoForumService.findById(id);
+    Optional<TopicoForum> dto = topicoForumService.findById(id);
     return new ResponseEntity<>(
-      Optional.of(new ModelMapper().map(dto.get(), TopicoForumResponse.class)), HttpStatus.OK);
+        Optional.of(new ModelMapper().map(dto.get(), TopicoForum.class)), HttpStatus.OK);
 
   }
 
@@ -67,14 +65,12 @@ public class TopicoForumController{
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<TopicoForumResponse> atualizar(
-    @RequestBody TopicoForumRequest topicoForumRequest, @PathVariable Long id
-    ) 
-    {
+  public ResponseEntity<TopicoForum> atualizar(
+      @RequestBody TopicoForum topicoForum, @PathVariable Long id) {
     ModelMapper mapper = new ModelMapper();
-    TopicoForumDTO topicoForumDto = mapper.map(topicoForumRequest, TopicoForumDTO.class);
-    topicoForumDto = topicoForumService.update(id, topicoForumDto);
+    // TopicoForum topicoForum = mapper.map(topicoForum, TopicoForum.class);
+    topicoForum = topicoForumService.update(id, topicoForum);
     return new ResponseEntity<>(
-mapper.map(topicoForumDto, TopicoForumResponse.class), HttpStatus.OK);
+        mapper.map(topicoForum, TopicoForum.class), HttpStatus.OK);
   }
 }

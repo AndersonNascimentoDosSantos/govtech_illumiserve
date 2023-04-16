@@ -2,17 +2,18 @@ package br.com.fiap.web_service.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-
-
 
 @Entity
 @Table(name = "tbl_empresas_eletricas")
@@ -33,16 +34,44 @@ public class Empresa {
 	@Column(name = "ds_email", nullable = false, unique = true)
 	private String email;
 
-	@OneToMany(mappedBy = "empresa")
+	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonManagedReference("empresa_avaliacoes")
 	private List<Avaliacao> avaliacoes;
 
 	@OneToMany(mappedBy = "empresa")
+	@JsonManagedReference("empresa_reclamacoes")
 	private List<Reclamacao> reclamacoes;
 
-	// public Empresa() {
-	// }
+	@OneToMany(mappedBy = "destinatario")
+	@JsonManagedReference("empresa_mensagemChats")
+	private List<MensagemChat> mensagemChats;
 
-	// getters and setters
+	public Empresa() {
+	}
+
+	public List<MensagemChat> getMensagemChats() {
+		return mensagemChats;
+	}
+
+	public void setMensagemChats(List<MensagemChat> mensagemChats) {
+		this.mensagemChats = mensagemChats;
+	}
+
+	public List<Reclamacao> getReclamacoes() {
+		return reclamacoes;
+	}
+
+	public void setReclamacoes(List<Reclamacao> reclamacoes) {
+		this.reclamacoes = reclamacoes;
+	}
+
+	public List<Avaliacao> getAvaliacoes() {
+		return avaliacoes;
+	}
+
+	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+		this.avaliacoes = avaliacoes;
+	}
 
 	public Long getIdEmpresa() {
 		return idEmpresa;
@@ -74,22 +103,6 @@ public class Empresa {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public List<Avaliacao> getAvaliacoes() {
-		return avaliacoes;
-	}
-
-	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
-		this.avaliacoes = avaliacoes;
-	}
-
-	public List<Reclamacao> getReclamacoes() {
-		return reclamacoes;
-	}
-
-	public void setReclamacoes(List<Reclamacao> reclamacoes) {
-		this.reclamacoes = reclamacoes;
 	}
 
 }

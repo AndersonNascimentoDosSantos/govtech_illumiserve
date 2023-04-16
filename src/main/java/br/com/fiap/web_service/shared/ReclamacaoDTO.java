@@ -1,6 +1,7 @@
 package br.com.fiap.web_service.shared;
 
 import java.util.Date;
+import java.util.List;
 
 import br.com.fiap.web_service.Enums.StatusReclamacao;
 
@@ -11,6 +12,8 @@ public class ReclamacaoDTO {
   private UsuarioDTO usuario;
 
   private EmpresaDTO empresa;
+
+  private List<PostagemRedeSocialDTO> redeSocial;
 
   private Date dataCriacao;
 
@@ -86,6 +89,12 @@ public class ReclamacaoDTO {
     this.status = status;
   }
 
-  // constructors, getters, and setters
+  public List<PostagemRedeSocialDTO> getRedeSocial() {
+    return redeSocial;
+  }
+
+  public void setRedeSocial(List<PostagemRedeSocialDTO> redeSocial) {
+    this.redeSocial = redeSocial;
+  }
 
 }

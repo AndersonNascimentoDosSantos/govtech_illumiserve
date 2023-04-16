@@ -1,0 +1,3179 @@
+{
+	"info": {
+		"_postman_id": "4495dce4-9a6f-4f05-a0bc-60a23205b541",
+		"name": "Generated from HAR",
+		"description": "HAR To Postman Generated Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "usuario",
+			"item": [
+				{
+					"name": "localhost:8080/api/usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/usuarios",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/usuarios",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"usuarios"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 00:39:43 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"idUsuario\": 1,\n        \"nome\": \"sonho de doce de chocolate\",\n        \"email\": \"tec.anderson@gmail.com\",\n        \"senha\": \"$2a$10$9uqzYWtMwmWAKHiWbW7tK.nXqOY/gsOgjBHtFHUSY.xbKf./zBHhm\",\n        \"tipoUsuario\": \"USER\",\n        \"avaliacoes\": [],\n        \"notificação\": [\n            {\n                \"idNotificacao\": 3,\n                \"mensagem\": \"era uma notificação\",\n                \"dataEnvio\": \"2023-04-12T01:42:00.204+00:00\"\n            }\n        ],\n        \"reclamacoes\": [\n            {\n                \"id\": 1,\n                \"postredeSocial\": [\n                    {\n                        \"id\": 1,\n                        \"mensagem\": \"isto é uma mensagem do forum\",\n                        \"dataPostagem\": \"2023-04-12T01:02:58.696+00:00\"\n                    },\n                    {\n                        \"id\": 2,\n                        \"mensagem\": \"isto é uma mensagem do forum\",\n                        \"dataPostagem\": \"2023-04-12T01:03:00.834+00:00\"\n                    }\n                ],\n                \"dataCriacao\": \"2023-04-12T01:02:18.845+00:00\",\n                \"latitude\": 0.0,\n                \"longitude\": 0.0,\n                \"descricao\": \"falta de iluminação publica\",\n                \"status\": \"ABERTA\"\n            }\n        ],\n        \"topicoForum\": [\n            {\n                \"idTopico\": 1,\n                \"titulo\": \"empresa neo energia\",\n                \"descricao\": \"isto é um topico\",\n                \"dataCriacao\": \"2023-04-12T01:02:07.373+00:00\",\n                \"mensagemForum\": [\n                    {\n                        \"idMensagem\": 1,\n                        \"conteudo\": \"isto é uma mensagem do forum\",\n                        \"dataPostagem\": \"2023-04-12T01:02:13.426+00:00\"\n                    }\n                ]\n            }\n        ],\n        \"redeSocial\": [\n            {\n                \"id\": 1,\n                \"nome\": \"linkedin\",\n                \"urlPagina\": \"teste.url.com.br\",\n                \"postRedeSocial\": [\n                    {\n                        \"id\": 2,\n                        \"mensagem\": \"isto é uma mensagem do forum\",\n                        \"dataPostagem\": \"2023-04-12T01:03:00.834+00:00\"\n                    },\n                    {\n                        \"id\": 1,\n                        \"mensagem\": \"isto é uma mensagem do forum\",\n                        \"dataPostagem\": \"2023-04-12T01:02:58.696+00:00\"\n                    }\n                ]\n            }\n        ],\n        \"mensagemChats\": []\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/usuarios/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/usuarios/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/usuarios/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 00:11:51 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idUsuario\": 1,\n    \"nome\": \"sonho de doce de chocolate\",\n    \"email\": \"tec.anderson@gmail.com\",\n    \"senha\": \"$2a$10$9uqzYWtMwmWAKHiWbW7tK.nXqOY/gsOgjBHtFHUSY.xbKf./zBHhm\",\n    \"tipoUsuario\": \"USER\",\n    \"avaliacoes\": [],\n    \"notificação\": [\n        {\n            \"idNotificacao\": 3,\n            \"mensagem\": \"era uma notificação\",\n            \"dataEnvio\": \"2023-04-12T01:42:00.204+00:00\"\n        }\n    ],\n    \"reclamacoes\": [\n        {\n            \"id\": 1,\n            \"postredeSocial\": [\n                {\n                    \"id\": 1,\n                    \"mensagem\": \"isto é uma mensagem do forum\",\n                    \"dataPostagem\": \"2023-04-12T01:02:58.696+00:00\"\n                },\n                {\n                    \"id\": 2,\n                    \"mensagem\": \"isto é uma mensagem do forum\",\n                    \"dataPostagem\": \"2023-04-12T01:03:00.834+00:00\"\n                }\n            ],\n            \"dataCriacao\": \"2023-04-12T01:02:18.845+00:00\",\n            \"latitude\": 0.0,\n            \"longitude\": 0.0,\n            \"descricao\": \"falta de iluminação publica\",\n            \"status\": \"ABERTA\"\n        }\n    ],\n    \"topicoForum\": [\n        {\n            \"idTopico\": 1,\n            \"titulo\": \"empresa neo energia\",\n            \"descricao\": \"isto é um topico\",\n            \"dataCriacao\": \"2023-04-12T01:02:07.373+00:00\",\n            \"mensagemForum\": [\n                {\n                    \"idMensagem\": 1,\n                    \"conteudo\": \"isto é uma mensagem do forum\",\n                    \"dataPostagem\": \"2023-04-12T01:02:13.426+00:00\"\n                }\n            ]\n        }\n    ],\n    \"redeSocial\": [\n        {\n            \"id\": 1,\n            \"nome\": \"linkedin\",\n            \"urlPagina\": \"teste.url.com.br\",\n            \"postRedeSocial\": [\n                {\n                    \"id\": 2,\n                    \"mensagem\": \"isto é uma mensagem do forum\",\n                    \"dataPostagem\": \"2023-04-12T01:03:00.834+00:00\"\n                },\n                {\n                    \"id\": 1,\n                    \"mensagem\": \"isto é uma mensagem do forum\",\n                    \"dataPostagem\": \"2023-04-12T01:02:58.696+00:00\"\n                }\n            ]\n        }\n    ],\n    \"mensagemChats\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/usuarios/2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/usuarios/2",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "not found / 404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/usuarios/2",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"2"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 00:12:59 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"titulo\": \"Not Found\",\n \"status\": 404,\n \"mensagem\": \"Nao foi possivel deletar o Usuario com o id: 2- Usuario não existe\"\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/usuarios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tipoUsuario\":\"USER\",\n    \"nome\": \"sonho de doce de chocolate\",\n    \"email\": \"tec.anderson.ns@gmail.com\",\n    \"senha\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL1}}/api/usuarios",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "created / 201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL1}}/api/usuarios",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"usuarios"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:01:58 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"idUsuario\": 1,\n \"nome\": \"sonho de doce de chocolate\",\n \"email\": \"tec.anderson@gmail.com\",\n \"senha\": \"$2a$10$9uqzYWtMwmWAKHiWbW7tK.nXqOY/gsOgjBHtFHUSY.xbKf./zBHhm\",\n \"tipoUsuario\": \"USER\",\n \"avaliacoes\": null,\n \"notificação\": null,\n \"reclamacoes\": null,\n \"topicoForum\": null,\n \"redeSocial\": null,\n \"mensagemChats\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/usuarios/1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"anderson nascimento\",\n    \"email\": \"tec.anderson@gmail.com\",\n    \"tipoUsuario\": \"USER\",\n    \"senha\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL1}}/api/usuarios/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL1}}/api/usuarios/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Apr 2023 02:38:06 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"idUsuario\": 1,\n \"nome\": \"sonho de doce de chocolate\",\n \"email\": \"tec.anderson@gmail.com\",\n \"tipoUsuario\": \"USER\",\n \"reclamacoes\": null,\n \"avaliacoes\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Avaliacoes",
+			"item": [
+				{
+					"name": "localhost:8080/api/avaliacoes/1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/api/avaliacoes/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"avaliacoes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/avaliacoes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/avaliacoes",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"avaliacoes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/avaliacoes",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"avaliacoes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 00:28:12 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": 1,\n  \"nota\": 5,\n  \"comentario\": \"empresa neo energia\",\n  \"dataAvaliacao\": \"2023-04-12T00:05:13.227+00:00\"\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/avaliacoes/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/avaliacoes/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"avaliacoes",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "no response code found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/avaliacoes/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"avaliacoes",
+										"1"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/avaliacoes/2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/avaliacoes/2",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"avaliacoes",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "not found / 404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/avaliacoes/2",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"avaliacoes",
+										"2"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Apr 2023 12:12:51 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"titulo\": \"Not Found\",\n \"status\": 404,\n \"mensagem\": \"Nao foi possivel deletar a avaliaçao com o id: 2- Avaliação não existe\"\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/avaliacoes/1/1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/api/avaliacoes/1/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"avaliacoes",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "created / 201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL1}}/api/avaliacoes/1/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"avaliacoes",
+										"1",
+										"1"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 00:40:00 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": 1,\n \"nota\": 5,\n \"comentario\": \"empresa neo energia\",\n \"dataAvaliacao\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Empresas",
+			"item": [
+				{
+					"name": "localhost:8080/api/empresas/1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/api/empresas/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"empresas",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL1}}/api/empresas/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"empresas",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Apr 2023 02:38:56 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"idEmpresa\": 1,\n \"nome\": \"empresa COELBA\",\n \"cnpj\": \"123.4567/0000-56\",\n \"email\": \"anderson.anderson@neoenergia.com.br\",\n \"avaliacoes\": null,\n \"reclamacoes\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/empresas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/empresas",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"empresas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/empresas",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"empresas"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 00:28:18 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"idEmpresa\": 1,\n  \"nome\": \"empresa neo energia\",\n  \"cnpj\": \"123.4567/0000-56\",\n  \"email\": \"tec.anderson@neoenergia.com.br\",\n  \"avaliacoes\": [\n   {\n    \"id\": 1,\n    \"nota\": 5,\n    \"comentario\": \"empresa neo energia\",\n    \"dataAvaliacao\": \"2023-04-12T00:05:13.227+00:00\"\n   }\n  ],\n  \"reclamacoes\": [\n   {\n    \"id\": 1,\n    \"postredeSocial\": [],\n    \"dataCriacao\": \"2023-04-12T00:05:55.540+00:00\",\n    \"latitude\": 0,\n    \"longitude\": 0,\n    \"descricao\": \"falta de iluminação publica\",\n    \"status\": \"ABERTA\"\n   }\n  ],\n  \"mensagemChats\": [\n   {\n    \"id\": 1,\n    \"conteudo\": \"isto é uma mensagem do forum\",\n    \"dataEnvio\": \"2023-04-12T00:06:04.470+00:00\",\n    \"dataUpdate\": \"2023-04-12T00:06:04.473+00:00\"\n   }\n  ]\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/empresas/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/empresas/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"empresas",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/empresas/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"empresas",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Apr 2023 00:57:36 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"idEmpresa\": 1,\n \"nome\": \"sonho de doce de morango\",\n \"cnpj\": null,\n \"email\": null,\n \"avaliacoes\": [],\n \"reclamacoes\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/empresas/2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/empresas/2",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"empresas",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "not found / 404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/empresas/2",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"empresas",
+										"2"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Apr 2023 00:57:44 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"titulo\": \"Not Found\",\n \"status\": 404,\n \"mensagem\": \"Nao foi possivel deletar a Reclamação com o id: 2- Avaliação não existe\"\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/empresas",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/api/empresas",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"empresas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "created / 201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL1}}/api/empresas",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"empresas"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:01:48 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"idEmpresa\": 1,\n \"nome\": \"empresa neo energia\",\n \"cnpj\": \"123.4567/0000-56\",\n \"email\": \"tec.anderson@neoenergia.com.br\",\n \"avaliacoes\": null,\n \"reclamacoes\": null,\n \"mensagemChats\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mensagem Chat",
+			"item": [
+				{
+					"name": "localhost:8080/api/mensagens_chat/3",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/api/mensagens_chat/3",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"mensagens_chat",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL1}}/api/mensagens_chat/3",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"mensagens_chat",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 00:27:54 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": 3,\n \"conteudo\": \"isto é uma mensagem do chat\",\n \"dataEnvio\": null,\n \"dataUpdate\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/mensagens_chat",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/mensagens_chat",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"mensagens_chat"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/mensagens_chat",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"mensagens_chat"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 00:28:27 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": 1,\n  \"conteudo\": \"isto é uma mensagem do forum\",\n  \"dataEnvio\": \"2023-04-12T00:06:04.470+00:00\",\n  \"dataUpdate\": \"2023-04-12T00:06:04.473+00:00\"\n },\n {\n  \"id\": 2,\n  \"conteudo\": \"isto é uma mensagem do chat\",\n  \"dataEnvio\": \"2023-04-12T00:27:54.502+00:00\",\n  \"dataUpdate\": \"2023-04-12T00:27:54.504+00:00\"\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/mensagens_chat/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/mensagens_chat/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"mensagens_chat",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "no response code found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/mensagens_chat/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"mensagens_chat",
+										"1"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/mensagens_chat",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"id\": 1,\n \"conteudo\": \"isto é uma mensagem do forum\",\n \"dataEnvio\": null,\n \"dataUpdate\": \"2023-04-12T00:40:06.030+00:00\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL1}}/api/mensagens_chat",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"mensagens_chat"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "created / 201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL1}}/api/mensagens_chat",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"mensagens_chat"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 00:40:06 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": 1,\n \"conteudo\": \"isto é uma mensagem do forum\",\n \"dataEnvio\": null,\n \"dataUpdate\": \"2023-04-12T00:40:06.030+00:00\"\n}"
+						},
+						{
+							"name": "localhost:8080/api/mensagens_chat",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"id\": 1,\n \"conteudo\": \"isto é uma mensagem do forum\",\n \"dataEnvio\": null,\n \"dataUpdate\": \"2023-04-12T00:40:06.030+00:00\"\n}"
+								},
+								"url": {
+									"raw": "{{baseURL1}}/api/mensagens_chat",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"mensagens_chat"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:09:54 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"conteudo\": \"isto é uma mensagem do forum\",\n    \"dataEnvio\": null,\n    \"dataUpdate\": \"2023-04-12T01:09:54.249+00:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/mensagens_chat/1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/mensagens_chat/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"mensagens_chat",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "no-content / 204",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/mensagens_chat/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"mensagens_chat",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 10 Apr 2023 21:14:36 GMT"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Forum",
+			"item": []
+		},
+		{
+			"name": "Reclamacoes",
+			"item": [
+				{
+					"name": "localhost:8080/api/reclamacoes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/reclamacoes",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"reclamacoes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/reclamacoes",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"reclamacoes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:03:46 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": 1,\n  \"postredeSocial\": [\n   {\n    \"id\": 1,\n    \"mensagem\": \"isto é uma mensagem do forum\",\n    \"dataPostagem\": \"2023-04-12T01:02:58.696+00:00\"\n   },\n   {\n    \"id\": 2,\n    \"mensagem\": \"isto é uma mensagem do forum\",\n    \"dataPostagem\": \"2023-04-12T01:03:00.834+00:00\"\n   }\n  ],\n  \"dataCriacao\": \"2023-04-12T01:02:18.845+00:00\",\n  \"latitude\": 0,\n  \"longitude\": 0,\n  \"descricao\": \"falta de iluminação publica\",\n  \"status\": \"ABERTA\"\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/reclamacoes/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/reclamacoes/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"reclamacoes",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "no response code found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/reclamacoes/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"reclamacoes",
+										"1"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/reclamacoes/1/1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/api/reclamacoes/1/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"reclamacoes",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "created / 201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL1}}/api/reclamacoes/1/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"reclamacoes",
+										"1",
+										"1"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:02:18 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": 1,\n \"postredeSocial\": null,\n \"dataCriacao\": null,\n \"latitude\": 0,\n \"longitude\": 0,\n \"descricao\": \"falta de iluminação publica\",\n \"status\": \"ABERTA\"\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/reclamacoes/2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/reclamacoes/2",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"reclamacoes",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "no response code found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/reclamacoes/2",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"reclamacoes",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/reclamacoes/1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/api/reclamacoes/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"reclamacoes",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "no response code found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL1}}/api/reclamacoes/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"reclamacoes",
+										"1"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Rede Social",
+			"item": [
+				{
+					"name": "localhost:8080/api/rede-social/1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/api/rede-social/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"rede-social",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL1}}/api/rede-social/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"rede-social",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 00:21:32 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": 1,\n \"nome\": \"isto é uma notificacao\",\n \"urlPagina\": \"teste.url.com\",\n \"postagemRedeSocial\": null,\n \"redeSocial\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/post-rede-social/3",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/api/post-rede-social/3",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"post-rede-social",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL1}}/api/post-rede-social/3",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"post-rede-social",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 00:27:29 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": 3,\n \"mensagem\": \"isto é uma mensagem do chat\",\n \"dataPostagem\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/rede-social",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/rede-social",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"rede-social"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/rede-social",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"rede-social"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:05:48 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": 1,\n  \"nome\": \"linkedin\",\n  \"urlPagina\": \"teste.url.com.br\",\n  \"postRedeSocial\": [\n   {\n    \"id\": 2,\n    \"mensagem\": \"isto é uma mensagem do forum\",\n    \"dataPostagem\": \"2023-04-12T01:03:00.834+00:00\"\n   },\n   {\n    \"id\": 1,\n    \"mensagem\": \"isto é uma mensagem do forum\",\n    \"dataPostagem\": \"2023-04-12T01:02:58.696+00:00\"\n   }\n  ]\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/rede-social/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/rede-social/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"rede-social",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/rede-social/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"rede-social",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 00:43:56 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": 1,\n \"nome\": \"isto é uma notificacao\",\n \"urlPagina\": \"teste.url.com.br\",\n \"postagemRedeSocial\": [],\n \"redeSocial\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/rede-social/2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/rede-social/2",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"rede-social",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "no-content / 204",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/rede-social/2",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"rede-social",
+										"2"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 00:21:53 GMT"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/rede-social/1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/api/rede-social/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"rede-social",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "created / 201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL1}}/api/rede-social/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"rede-social",
+										"1"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:02:39 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": 1,\n \"nome\": \"linkedin\",\n \"urlPagina\": \"teste.url.com.br\",\n \"postagemRedeSocial\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Posts Redes Sociais",
+			"item": [
+				{
+					"name": "localhost:8080/api/post-rede-social",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/post-rede-social",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"post-rede-social"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/post-rede-social",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"post-rede-social"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 00:42:15 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": 1,\n  \"mensagem\": \"isto é uma mensagem do forum\",\n  \"dataPostagem\": \"2023-04-12T00:40:21.815+00:00\"\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/post-rede-social/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/post-rede-social/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"post-rede-social",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "not found / 404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/post-rede-social/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"post-rede-social",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 00:23:23 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"titulo\": \"Not Found\",\n \"status\": 404,\n \"mensagem\": \"a Postagem com o id: 1 não encontrada\"\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/post-rede-social/1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/post-rede-social/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"post-rede-social",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "not found / 404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/post-rede-social/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"post-rede-social",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 00:25:18 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"titulo\": \"Not Found\",\n \"status\": 404,\n \"mensagem\": \"Nao foi possivel deletar a Postagem com o id: 1- Avaliação não existe\"\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/post-rede-social/1/1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/api/post-rede-social/1/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"post-rede-social",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "created / 201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL1}}/api/post-rede-social/1/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"post-rede-social",
+										"1",
+										"1"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:03:00 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": 2,\n \"mensagem\": \"isto é uma mensagem do forum\",\n \"dataPostagem\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Notificações",
+			"item": [
+				{
+					"name": "localhost:8080/api/notificacao/1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \n    \"mensagem\": \"era uma notificação atualizada\"\n  \n}"
+						},
+						"url": {
+							"raw": "{{baseURL1}}/api/notificacao/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"notificacao",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"mensagem\":\"era uma notificação\",\n    \"usuario\":{\n        \"idUsuario\":1\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseURL1}}/api/notificacao/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"notificacao",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:42:00 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idNotificacao\": 1,\n    \"mensagem\": \"era uma notificação atualizada\",\n    \"dataEnvio\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/notificacao",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/notificacao",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"notificacao"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/notificacao",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"notificacao"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 00:28:38 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"idNotificacao\": 1,\n  \"mensagem\": \"isto é uma notificacao\",\n  \"dataEnvio\": \"2023-04-12T00:06:00.456+00:00\"\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/notificacao/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/notificacao/2",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"notificacao",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Not Found / 404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/notificacao/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"notificacao",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:35:43 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"titulo\": \"Not Found\",\n    \"status\": 404,\n    \"mensagem\": \"a Mensagem com o id: 1 não encontrada\"\n}"
+						},
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/notificacao/2",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"notificacao",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:37:30 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idNotificacao\": 2,\n    \"mensagem\": \"isto é uma notificacao\",\n    \"dataEnvio\": \"2023-04-12T01:37:00.211+00:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/notificacao/2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/notificacao/2",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"notificacao",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "No Content / 204",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/notificacao/2",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"notificacao",
+										"2"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:43:13 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/notificacao/1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n\t\"mensagem\":\"isto é uma notificacao\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL1}}/api/notificacao/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"notificacao",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "created / 201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL1}}/api/notificacao/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"notificacao",
+										"1"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:02:23 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"idNotificacao\": 1,\n \"mensagem\": \"isto é uma notificacao\",\n \"dataEnvio\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Topicos forum",
+			"item": [
+				{
+					"name": "localhost:8080/api/topicos/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/topicos/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"topicos",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/topicos/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"topicos",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:30:42 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idTopico\": 1,\n    \"titulo\": \"empresa neo energia\",\n    \"descricao\": \"isto é um topico\",\n    \"dataCriacao\": \"2023-04-12T01:02:07.373+00:00\",\n    \"mensagemForum\": [\n        {\n            \"idMensagem\": 1,\n            \"conteudo\": \"isto é uma mensagem do forum\",\n            \"dataPostagem\": \"2023-04-12T01:02:13.426+00:00\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/topicos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/topicos",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"topicos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/topicos",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"topicos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 11 Apr 2023 23:48:36 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"idTopico\": 2,\n  \"titulo\": \"empresa neo energia\",\n  \"descricao\": \"isto é um topico\",\n  \"dataCriacao\": \"2023-04-11T23:46:46.060+00:00\",\n  \"mensagemForum\": [\n   {\n    \"idMensagem\": 3,\n    \"conteudo\": \"isto é uma mensagem do forum\",\n    \"dataPostagem\": \"2023-04-11T23:48:11.198+00:00\"\n   }\n  ]\n },\n {\n  \"idTopico\": 3,\n  \"titulo\": \"empresa neo energia\",\n  \"descricao\": \"isto é um topico\",\n  \"dataCriacao\": \"2023-04-11T23:47:14.672+00:00\",\n  \"mensagemForum\": []\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/topicos/2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/topicos/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"topicos",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Not Found / 404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/topicos/2",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"topicos",
+										"2"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:31:50 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"titulo\": \"Not Found\",\n    \"status\": 404,\n    \"mensagem\": \"Nao foi possivel deletar a Mensagem com o id: 2- Avaliação não existe\"\n}"
+						},
+						{
+							"name": "No Content / 204",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/topicos/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"topicos",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:32:42 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/topicos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/api/topicos",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"topicos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "created / 201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL1}}/api/topicos",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"topicos"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:02:07 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"idTopico\": 1,\n \"titulo\": \"empresa neo energia\",\n \"descricao\": \"isto é um topico\",\n \"dataCriacao\": null,\n \"mensagemForum\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/topicos/1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"titulo\": \"empresa neo energia\",\n  \"descricao\": \"isto é um topico\",\n  \"usuarioCriador\":{\n      \"idUsuario\":1\n  }\n  \n}"
+						},
+						"url": {
+							"raw": "{{baseURL1}}/api/topicos/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"topicos",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"titulo\": \"empresa neo energia\",\n  \"descricao\": \"isto é um topico\",\n  \"usuarioCriador\":{\n      \"idUsuario\":1\n  }\n  \n}"
+								},
+								"url": {
+									"raw": "{{baseURL1}}/api/topicos/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"topicos",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:26:42 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idTopico\": 1,\n    \"titulo\": \"empresa neo energia\",\n    \"descricao\": \"isto é um topico\",\n    \"dataCriacao\": null,\n    \"mensagemForum\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mensagem Forum",
+			"item": [
+				{
+					"name": "localhost:8080/api/mensagensForum/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/mensagensForum/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"mensagensForum",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Not Found / 404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/mensagensForum/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"mensagensForum",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:45:16 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2023-04-12T01:45:16.193+00:00\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"No message available\",\n    \"path\": \"/api/mensagensForum/1\"\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/mensagensForum/2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/mensagensForum/2",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"mensagensForum",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "not found / 404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/notificacao/2",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"notificacao",
+										"2"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Apr 2023 16:34:37 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"titulo\": \"Not Found\",\n \"status\": 404,\n \"mensagem\": \"Nao foi possivel deletar a Mensagem com o id: 2- Avaliação não existe\"\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/topicos/mensagensForum",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/api/topicos/mensagensForum",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"topicos",
+								"mensagensForum"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/topicos/mensagensForum",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"topicos",
+										"mensagensForum"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 11 Apr 2023 23:48:24 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"idMensagem\": 3,\n  \"conteudo\": \"isto é uma mensagem do forum\",\n  \"dataPostagem\": \"2023-04-11T23:48:11.198+00:00\"\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/topicos/mensagensForum",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/api/topicos/mensagensForum",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"topicos",
+								"mensagensForum"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "created / 201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL1}}/api/topicos/mensagensForum",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"topicos",
+										"mensagensForum"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Apr 2023 01:02:13 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"idMensagem\": 1,\n \"conteudo\": \"isto é uma mensagem do forum\",\n \"dataPostagem\": \"2023-04-12T01:02:13.425+00:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "localhost:8080/api/mensagensForum/1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/api/mensagensForum/1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"api",
+								"mensagensForum",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "no response code found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL1}}/api/notificacoes/1",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"notificacoes",
+										"1"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL1",
+			"value": "http://localhost:8080",
+			"type": "any"
+		}
+	]
+}

@@ -2,8 +2,6 @@ package br.com.fiap.web_service.shared;
 
 import java.util.List;
 
-import org.mindrot.jbcrypt.BCrypt;
-
 public class EmpresaDTO {
 
   private Long idEmpresa;
@@ -17,6 +15,18 @@ public class EmpresaDTO {
   private List<AvaliacaoDTO> avaliacoes;
 
   private List<ReclamacaoDTO> reclamacoes;
+
+  private List<MensagemChatDTO> mensagemChats;
+
+  // getters and setters
+
+  public List<MensagemChatDTO> getMensagemChats() {
+    return mensagemChats;
+  }
+
+  public void setMensagemChats(List<MensagemChatDTO> mensagemChats) {
+    this.mensagemChats = mensagemChats;
+  }
 
   public Long getIdEmpresa() {
     return idEmpresa;

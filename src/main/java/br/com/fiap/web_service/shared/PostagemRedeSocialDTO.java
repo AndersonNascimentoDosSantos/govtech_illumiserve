@@ -10,9 +10,19 @@ public class PostagemRedeSocialDTO {
 
   private UsuarioDTO usuario;
 
+  private ReclamacaoDTO reclamacao;
+
   private String mensagem;
 
   private Date dataPostagem;
+
+  public ReclamacaoDTO getReclamacao() {
+    return reclamacao;
+  }
+
+  public void setReclamacao(ReclamacaoDTO reclamacao) {
+    this.reclamacao = reclamacao;
+  }
 
   public Long getId() {
     return id;
