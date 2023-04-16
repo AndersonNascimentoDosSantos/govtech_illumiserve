@@ -2,6 +2,8 @@ package br.com.fiap.web_service.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,7 +11,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -21,32 +22,27 @@ public class PostagemRedeSocial {
 	@Id
 	@SequenceGenerator(name = "post_rede", sequenceName = "seq_post_rede", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_rede")
+	@Column(name = "idPostagemRedeSocial")
 	private Long id;
 
-	@ManyToOne(optional = true)
+	// #verified
+	@ManyToOne()
 	@JoinColumn(name = "id_rede_social", nullable = false)
+	@JsonBackReference("posts_redeSocial")
 	private RedeSocial redeSocial;
 
-	@ManyToOne(optional = true)
-	@JoinColumn(name = "id_usuario", nullable = true)
-	private Usuario usuario;
+	// #verified
+	@ManyToOne()
+	@JoinColumn(name = "id_reclamacao", nullable = false)
+	@JsonBackReference("reclamacao_redeSocial")
+	private Reclamacao reclamacao;
 
-	@Column(name = "ds_messagem", nullable = false, columnDefinition = "CLOB")
+	@Column(name = "ds_messagem", nullable = false, columnDefinition = "text")
 	private String mensagem;
 
-	@Column(name = "dt_data_postagem", nullable = false)
+	@Column(name = "dt_data_postagem", updatable = false, nullable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataPostagem;
-
-	// public PostagemRedeSocial() {
-	// super();
-	// // TODO Auto-generated constructor stub
-	// }
-
-	@PrePersist
-	protected void onCreate() {
-		this.dataPostagem = new Date();
-	}
 
 	public Long getId() {
 		return id;
@@ -64,12 +60,12 @@ public class PostagemRedeSocial {
 		this.redeSocial = redeSocial;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Reclamacao getReclamacao() {
+		return reclamacao;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setReclamacao(Reclamacao reclamacao) {
+		this.reclamacao = reclamacao;
 	}
 
 	public String getMensagem() {

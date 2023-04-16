@@ -19,43 +19,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.fiap.web_service.model.MensagemForum;
 import br.com.fiap.web_service.services.MensagemForumService;
-import br.com.fiap.web_service.shared.MensagemForumDTO;
-import br.com.fiap.web_service.view.model.request.MensagemForumRequest;
-import br.com.fiap.web_service.view.model.response.MensagemForumResponse;
 
 @RestController
 @RequestMapping("/api/topicos/mensagensForum")
 public class MensagemForumController {
   @Autowired
-  private  MensagemForumService mensagemForumService;
+  private MensagemForumService mensagemForumService;
 
   @GetMapping
-  public ResponseEntity<List<MensagemForumResponse>> obterTodos() {
-    List<MensagemForumDTO> mensagens = mensagemForumService.findAll();
+  public ResponseEntity<List<MensagemForum>> obterTodos() {
+    List<MensagemForum> mensagens = mensagemForumService.findAll();
     ModelMapper mapper = new ModelMapper();
-    List<MensagemForumResponse> resposta = mensagens.stream().map(mensagemForumDto -> mapper
-        .map(mensagemForumDto, MensagemForumResponse.class))
+    List<MensagemForum> resposta = mensagens.stream().map(mensagemForum -> mapper
+        .map(mensagemForum, MensagemForum.class))
         .collect(Collectors.toList());
     return new ResponseEntity<>(resposta, HttpStatus.OK);
   }
 
   @PostMapping
-  public ResponseEntity<MensagemForumResponse> adicionar(@RequestBody MensagemForumRequest msgRequest) {
+  public ResponseEntity<MensagemForum> adicionar(@RequestBody MensagemForum msgRequest) {
     ModelMapper mapper = new ModelMapper();
 
-   MensagemForumDTO msgDto = mapper.map(msgRequest, MensagemForumDTO.class);
+    MensagemForum msgDto = mapper.map(msgRequest, MensagemForum.class);
 
     msgDto = mensagemForumService.create(msgDto);
 
-    return new ResponseEntity<>(mapper.map(msgDto, MensagemForumResponse.class), HttpStatus.CREATED);
+    return new ResponseEntity<>(mapper.map(msgDto, MensagemForum.class), HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Optional<MensagemForumResponse>> obterPorId(@PathVariable Long id) {
+  public ResponseEntity<Optional<MensagemForum>> obterPorId(@PathVariable Long id) {
 
-    Optional<MensagemForumDTO> dto = mensagemForumService.findById(id);
-    return new ResponseEntity<>(Optional.of(new ModelMapper().map(dto.get(), MensagemForumResponse.class)), HttpStatus.OK);
+    Optional<MensagemForum> dto = mensagemForumService.findById(id);
+    return new ResponseEntity<>(Optional.of(new ModelMapper().map(dto.get(), MensagemForum.class)),
+        HttpStatus.OK);
 
   }
 
@@ -66,11 +65,12 @@ public class MensagemForumController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<MensagemForumResponse> atualizar(@RequestBody MensagemForumRequest msgRequest, @PathVariable Long id) {
+  public ResponseEntity<MensagemForum> atualizar(@RequestBody MensagemForum msgRequest,
+      @PathVariable Long id) {
     ModelMapper mapper = new ModelMapper();
-    MensagemForumDTO msgDto = mapper.map(msgRequest, MensagemForumDTO.class);
+    MensagemForum msgDto = mapper.map(msgRequest, MensagemForum.class);
     msgDto = mensagemForumService.update(id, msgDto);
     return new ResponseEntity<>(
-mapper.map(msgDto, MensagemForumResponse.class), HttpStatus.OK);
+        mapper.map(msgDto, MensagemForum.class), HttpStatus.OK);
   }
 }

@@ -13,29 +13,27 @@ import br.com.fiap.web_service.model.exception.ResourceNotFoundException;
 
 import br.com.fiap.web_service.repository.MensagemForumRepository;
 
-import br.com.fiap.web_service.shared.MensagemForumDTO;
-
 @Service
 public class MensagemForumService {
   @Autowired
   private MensagemForumRepository mensagemForumRepository;
 
-  public List<MensagemForumDTO> findAll() {
+  public List<MensagemForum> findAll() {
     // get all Avaliations
     List<MensagemForum> mensagensForum = mensagemForumRepository.findAll();
     return mensagensForum.stream().map(mensagemForum -> new ModelMapper()
-        .map(mensagemForum, MensagemForumDTO.class))
+        .map(mensagemForum, MensagemForum.class))
         .collect(Collectors.toList());
 
   }
 
-  public Optional<MensagemForumDTO> findById(Long id) {
+  public Optional<MensagemForum> findById(Long id) {
     Optional<MensagemForum> mensagemForum = mensagemForumRepository.findById(id);
 
     if (mensagemForum.isEmpty()) {
       throw new ResourceNotFoundException("a Mensagem com o id: " + id + " não encontrada");
     }
-    return Optional.of(new ModelMapper().map(mensagemForum.get(), MensagemForumDTO.class));
+    return Optional.of(new ModelMapper().map(mensagemForum.get(), MensagemForum.class));
   }
 
   public void deleteById(Long id) {
@@ -49,25 +47,25 @@ public class MensagemForumService {
 
   }
 
-  public MensagemForumDTO create(MensagemForumDTO mensagemForumDTO) {
+  public MensagemForum create(MensagemForum mensagemForum) {
 
     // delete the id from the object
-    mensagemForumDTO.setIdMensagem(null);
+    mensagemForum.setIdMensagem(null);
     // create a mapper object
     ModelMapper mapper = new ModelMapper();
 
-    MensagemForum mensagemForum = mapper.map(mensagemForumDTO, MensagemForum.class);
+    // MensagemForum mensagemForum = mapper.map(mensagemForum, MensagemForum.class);
     mensagemForum = mensagemForumRepository.save(mensagemForum);
-    mensagemForumDTO.setIdMensagem(mensagemForum.getIdMensagem());
-    return mensagemForumDTO;
+    mensagemForum.setIdMensagem(mensagemForum.getIdMensagem());
+    return mensagemForum;
 
   }
 
-  public MensagemForumDTO update(Long id, MensagemForumDTO mensagemForumDTO) {
-    mensagemForumDTO.setIdMensagem(id);
+  public MensagemForum update(Long id, MensagemForum mensagemForum) {
+    mensagemForum.setIdMensagem(id);
     ModelMapper mapper = new ModelMapper();
-    MensagemForum mensagemForum = mapper.map(mensagemForumDTO, MensagemForum.class);
+    // MensagemForum mensagemForum = mapper.map(mensagemForum, MensagemForum.class);
     mensagemForumRepository.save(mensagemForum);
-    return mensagemForumDTO;
+    return mensagemForum;
   }
 }

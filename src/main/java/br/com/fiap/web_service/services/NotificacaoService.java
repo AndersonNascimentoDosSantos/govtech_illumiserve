@@ -13,29 +13,27 @@ import br.com.fiap.web_service.model.exception.ResourceNotFoundException;
 
 import br.com.fiap.web_service.repository.NotificacaoRepository;
 
-import br.com.fiap.web_service.shared.NotificacaoDTO;
-
 @Service
 public class NotificacaoService {
   @Autowired
   private NotificacaoRepository notificacaoRepository;
 
-  public List<NotificacaoDTO> findAll() {
+  public List<Notificacao> findAll() {
     // get all Avaliations
     List<Notificacao> notificacoes = notificacaoRepository.findAll();
     return notificacoes.stream().map(notificacao -> new ModelMapper()
-        .map(notificacao, NotificacaoDTO.class))
+        .map(notificacao, Notificacao.class))
         .collect(Collectors.toList());
 
   }
 
-  public Optional<NotificacaoDTO> findById(Long id) {
+  public Optional<Notificacao> findById(Long id) {
     Optional<Notificacao> notificacao = notificacaoRepository.findById(id);
 
     if (notificacao.isEmpty()) {
       throw new ResourceNotFoundException("a Mensagem com o id: " + id + " não encontrada");
     }
-    return Optional.of(new ModelMapper().map(notificacao.get(), NotificacaoDTO.class));
+    return Optional.of(new ModelMapper().map(notificacao.get(), Notificacao.class));
   }
 
   public void deleteById(Long id) {
@@ -49,25 +47,25 @@ public class NotificacaoService {
 
   }
 
-  public NotificacaoDTO create(NotificacaoDTO notificacaoDto) {
+  public Notificacao create(Notificacao notificacao) {
 
     // delete the id from the object
-    notificacaoDto.setIdNotificacao(null);
+    notificacao.setIdNotificacao(null);
     // create a mapper object
     ModelMapper mapper = new ModelMapper();
 
-    Notificacao notificacao = mapper.map(notificacaoDto, Notificacao.class);
+    // Notificacao notificacao = mapper.map(notificacao, Notificacao.class);
     notificacao = notificacaoRepository.save(notificacao);
-    notificacaoDto.setIdNotificacao(notificacao.getIdNotificacao());
-    return notificacaoDto;
+    notificacao.setIdNotificacao(notificacao.getIdNotificacao());
+    return notificacao;
 
   }
 
-  public NotificacaoDTO update(Long id, NotificacaoDTO notificacaoDto) {
-    notificacaoDto.setIdNotificacao(id);
+  public Notificacao update(Long id, Notificacao notificacao) {
+    notificacao.setIdNotificacao(id);
     ModelMapper mapper = new ModelMapper();
-    Notificacao notificacao = mapper.map(notificacaoDto, Notificacao.class);
+    // Notificacao notificacao = mapper.map(notificacao, Notificacao.class);
     notificacaoRepository.save(notificacao);
-    return notificacaoDto;
+    return notificacao;
   }
 }

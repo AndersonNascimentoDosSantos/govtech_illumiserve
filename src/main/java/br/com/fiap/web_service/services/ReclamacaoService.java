@@ -11,29 +11,28 @@ import org.springframework.stereotype.Service;
 import br.com.fiap.web_service.model.Reclamacao;
 import br.com.fiap.web_service.model.exception.ResourceNotFoundException;
 import br.com.fiap.web_service.repository.ReclamacaoRepository;
-import br.com.fiap.web_service.shared.ReclamacaoDTO;
 
 @Service
 public class ReclamacaoService {
   @Autowired
   private ReclamacaoRepository ReclamacaoRepository;
 
-  public List<ReclamacaoDTO> findAll() {
+  public List<Reclamacao> findAll() {
     // get all Avaliations
     List<Reclamacao> Reclamacoes = ReclamacaoRepository.findAll();
     return Reclamacoes.stream().map(Reclamacao -> new ModelMapper()
-        .map(Reclamacao, ReclamacaoDTO.class))
+        .map(Reclamacao, Reclamacao.class))
         .collect(Collectors.toList());
 
   }
 
-  public Optional<ReclamacaoDTO> findById(Long id) {
+  public Optional<Reclamacao> findById(Long id) {
     Optional<Reclamacao> Reclamacao = ReclamacaoRepository.findById(id);
 
     if (Reclamacao.isEmpty()) {
       throw new ResourceNotFoundException("a reclamação com o id: " + id + " não encontrada");
     }
-    return Optional.of(new ModelMapper().map(Reclamacao.get(), ReclamacaoDTO.class));
+    return Optional.of(new ModelMapper().map(Reclamacao.get(), Reclamacao.class));
   }
 
   public void deleteById(Long id) {
@@ -47,25 +46,25 @@ public class ReclamacaoService {
 
   }
 
-  public ReclamacaoDTO create(ReclamacaoDTO ReclamacaoDto) {
+  public Reclamacao create(Reclamacao Reclamacao) {
 
     // delete the id from the object
-    ReclamacaoDto.setId(null);
+    Reclamacao.setId(null);
     // create a mapper object
     ModelMapper mapper = new ModelMapper();
 
-    Reclamacao Reclamacao = mapper.map(ReclamacaoDto, Reclamacao.class);
+    // Reclamacao Reclamacao = mapper.map(Reclamacao, Reclamacao.class);
     Reclamacao = ReclamacaoRepository.save(Reclamacao);
-    ReclamacaoDto.setId(Reclamacao.getId());
-    return ReclamacaoDto;
+    Reclamacao.setId(Reclamacao.getId());
+    return Reclamacao;
 
   }
 
-  public ReclamacaoDTO update(Long id, ReclamacaoDTO ReclamacaoDTO) {
-    ReclamacaoDTO.setId(id);
+  public Reclamacao update(Long id, Reclamacao Reclamacao) {
+    Reclamacao.setId(id);
     ModelMapper mapper = new ModelMapper();
-    Reclamacao Reclamacao = mapper.map(ReclamacaoDTO, Reclamacao.class);
+    // Reclamacao Reclamacao = mapper.map(Reclamacao, Reclamacao.class);
     ReclamacaoRepository.save(Reclamacao);
-    return ReclamacaoDTO;
+    return Reclamacao;
   }
 }

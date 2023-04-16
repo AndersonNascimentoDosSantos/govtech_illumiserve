@@ -11,6 +11,23 @@ import jakarta.persistence.EntityManager;
 
 public class UsuarioResponse {
 
+  public static UsuarioResponse autenticar(String email, String password,
+      EntityManager em) throws Exception {
+    try {
+      UsuarioResponse usuario = em.createNamedQuery("Usuario.findByEmail",
+          UsuarioResponse.class)
+          .setParameter("email", email)
+          .getSingleResult();
+      if (usuario.verificaSenha(password)) {
+        return usuario; // authentication successful
+      } else {
+        throw new Exception("Invalid password for user " + email);
+      }
+    } catch (Exception e) {
+      throw new ResourceNotFoundException("User " + email + " not found");
+    }
+  }
+
   private Long idUsuario;
 
   private String nome;
@@ -22,8 +39,49 @@ public class UsuarioResponse {
   private TipoUsuario tipoUsuario;
 
   private List<ReclamacaoResponse> reclamacoes;
-
   private List<AvaliacaoResponse> avaliacoes;
+  private List<TopicoForumResponse> topicoForum;
+  // private List<MensagemForum> mensagemForum;
+  private List<RedeSocialResponse> redeSocial;
+  private List<MensagemChatResponse> mensagemChats;
+
+  private List<NotificacaoResponse> notificação;
+
+  public String getSenha() {
+    return senha;
+  }
+
+  public List<TopicoForumResponse> getTopicoForum() {
+    return topicoForum;
+  }
+
+  public void setTopicoForum(List<TopicoForumResponse> topicoForum) {
+    this.topicoForum = topicoForum;
+  }
+
+  public List<RedeSocialResponse> getRedeSocial() {
+    return redeSocial;
+  }
+
+  public void setRedeSocial(List<RedeSocialResponse> redeSocial) {
+    this.redeSocial = redeSocial;
+  }
+
+  public List<MensagemChatResponse> getMensagemChats() {
+    return mensagemChats;
+  }
+
+  public void setMensagemChats(List<MensagemChatResponse> mensagemChats) {
+    this.mensagemChats = mensagemChats;
+  }
+
+  public List<NotificacaoResponse> getNotificação() {
+    return notificação;
+  }
+
+  public void setNotificação(List<NotificacaoResponse> notificação) {
+    this.notificação = notificação;
+  }
 
   public String toString() {
     return "Usuario [idUsuario=" + this.getIdUsuario() + ", nome=" + this.getNome() + ", email=" + this.getEmail()
@@ -86,23 +144,6 @@ public class UsuarioResponse {
 
   public boolean verificaSenha(String senha) {
     return BCrypt.checkpw(senha, this.senha);
-  }
-
-  public static UsuarioResponse autenticar(String email, String password,
-      EntityManager em) throws Exception {
-    try {
-      UsuarioResponse usuario = em.createNamedQuery("Usuario.findByEmail",
-          UsuarioResponse.class)
-          .setParameter("email", email)
-          .getSingleResult();
-      if (usuario.verificaSenha(password)) {
-        return usuario; // authentication successful
-      } else {
-        throw new Exception("Invalid password for user " + email);
-      }
-    } catch (Exception e) {
-      throw new ResourceNotFoundException("User " + email + " not found");
-    }
   }
 
 }

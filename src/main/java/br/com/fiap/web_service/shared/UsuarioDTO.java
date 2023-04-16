@@ -11,6 +11,22 @@ import jakarta.persistence.EntityManager;
 
 public class UsuarioDTO {
 
+  // public static Usuario autenticar(String email, String password, EntityManager
+  // em) throws Exception {
+  // try {
+  // Usuario usuario = em.createNamedQuery("Usuario.findByEmail", Usuario.class)
+  // .setParameter("email", email)
+  // .getSingleResult();
+  // if (usuario.verificaSenha(password)) {
+  // return usuario; // authentication successful
+  // } else {
+  // throw new Exception("Invalid password for user " + email);
+  // }
+  // } catch (NoResultException e) {
+  // throw new Exception("User " + email + " not found");
+  // }
+  // }
+
   private Long idUsuario;
 
   private String nome;
@@ -21,22 +37,70 @@ public class UsuarioDTO {
 
   private TipoUsuario tipoUsuario;
 
+  // #reclamacoes
+
   private List<ReclamacaoDTO> reclamacoes;
+
+  // #avaliacoes
 
   private List<AvaliacaoDTO> avaliacoes;
 
-  public String toString() {
-    return "Usuario [idUsuario=" + this.getIdUsuario() + ", nome=" + this.getNome() + ", email=" + this.getEmail()
-        + ", senha=" + senha
-        + ", tipoUsuario=" + this.getTipoUsuario() + "]";
+  // #topicos forum
+
+  private List<TopicoForumDTO> topicoForum;
+
+  // #mensagem forum
+
+  // #rede sociais
+
+  private List<RedeSocialDTO> redeSocial;
+
+  // #menssagens do chat
+
+  private List<MensagemChatDTO> mensagemChats;
+
+  // #notificação
+
+  private List<NotificacaoDTO> notificação;
+
+  public String getSenha() {
+    return senha;
+  }
+
+  public List<TopicoForumDTO> getTopicoForum() {
+    return topicoForum;
+  }
+
+  public void setTopicoForum(List<TopicoForumDTO> topicoForum) {
+    this.topicoForum = topicoForum;
+  }
+
+  public List<RedeSocialDTO> getRedeSocial() {
+    return redeSocial;
+  }
+
+  public void setRedeSocial(List<RedeSocialDTO> redeSocial) {
+    this.redeSocial = redeSocial;
+  }
+
+  public List<MensagemChatDTO> getMensagemChats() {
+    return mensagemChats;
+  }
+
+  public void setMensagemChats(List<MensagemChatDTO> mensagemChats) {
+    this.mensagemChats = mensagemChats;
+  }
+
+  public List<NotificacaoDTO> getNotificação() {
+    return notificação;
+  }
+
+  public void setNotificação(List<NotificacaoDTO> notificação) {
+    this.notificação = notificação;
   }
 
   public Long getIdUsuario() {
     return idUsuario;
-  }
-
-  public String getSenha() {
-    return senha;
   }
 
   public void setIdUsuario(Long idUsuario) {
@@ -91,22 +155,4 @@ public class UsuarioDTO {
   public boolean verificaSenha(String senha) {
     return BCrypt.checkpw(senha, this.senha);
   }
-
-  public static UsuarioDTO autenticar(String email, String password,
-      EntityManager em) throws Exception {
-    try {
-      UsuarioDTO usuario = em.createNamedQuery("Usuario.findByEmail",
-          UsuarioDTO.class)
-          .setParameter("email", email)
-          .getSingleResult();
-      if (usuario.verificaSenha(password)) {
-        return usuario; // authentication successful
-      } else {
-        throw new Exception("Invalid password for user " + email);
-      }
-    } catch (Exception e) {
-      throw new ResourceNotFoundException("User " + email + " not found");
-    }
-  }
-
 }

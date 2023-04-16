@@ -19,44 +19,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.fiap.web_service.model.Notificacao;
+import br.com.fiap.web_service.model.Usuario;
 import br.com.fiap.web_service.services.NotificacaoService;
-import br.com.fiap.web_service.shared.NotificacaoDTO;
-import br.com.fiap.web_service.view.model.request.NotificacaoRequest;
-import br.com.fiap.web_service.view.model.response.NotificacaoResponse;
 
 @RestController
 @RequestMapping("/api/notificacao")
 public class NotificacaoController {
   @Autowired
-  private  NotificacaoService notificacaoService;
+  private NotificacaoService notificacaoService;
 
   @GetMapping
-  public ResponseEntity<List<NotificacaoResponse>> obterTodos() {
-    List<NotificacaoDTO> topicos = notificacaoService.findAll();
+  public ResponseEntity<List<Notificacao>> obterTodos() {
+    List<Notificacao> topicos = notificacaoService.findAll();
     ModelMapper mapper = new ModelMapper();
-    List<NotificacaoResponse> resposta = topicos.stream().map(notificacaoDto -> mapper
-        .map(notificacaoDto, NotificacaoResponse.class))
+    List<Notificacao> resposta = topicos.stream().map(notificacao -> mapper
+        .map(notificacao, Notificacao.class))
         .collect(Collectors.toList());
     return new ResponseEntity<>(resposta, HttpStatus.OK);
   }
 
-  @PostMapping
-  public ResponseEntity<NotificacaoResponse> adicionar(@RequestBody NotificacaoRequest topicoForumRequest) {
+  @PostMapping("/{idUsuario}")
+  public ResponseEntity<Notificacao> adicionar(@RequestBody Notificacao topicoForumRequest,
+      @PathVariable Long idUsuario) {
     ModelMapper mapper = new ModelMapper();
+    Usuario usuario = new Usuario();
+    usuario.setIdUsuario(idUsuario);
 
-   NotificacaoDTO notificacaoDto = mapper.map(topicoForumRequest, NotificacaoDTO.class);
+    Notificacao notificacao = mapper.map(topicoForumRequest, Notificacao.class);
+    notificacao.setUsuario(usuario);
+    notificacao = notificacaoService.create(notificacao);
 
-    notificacaoDto = notificacaoService.create(notificacaoDto);
-
-    return new ResponseEntity<>(mapper.map(notificacaoDto, NotificacaoResponse.class), HttpStatus.CREATED);
+    return new ResponseEntity<>(mapper.map(notificacao, Notificacao.class), HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Optional<NotificacaoResponse>> obterPorId(@PathVariable Long id) {
+  public ResponseEntity<Optional<Notificacao>> obterPorId(@PathVariable Long id) {
 
-    Optional<NotificacaoDTO> dto = notificacaoService.findById(id);
+    Optional<Notificacao> dto = notificacaoService.findById(id);
     return new ResponseEntity<>(
-      Optional.of(new ModelMapper().map(dto.get(), NotificacaoResponse.class)), HttpStatus.OK);
+        Optional.of(new ModelMapper().map(dto.get(), Notificacao.class)), HttpStatus.OK);
 
   }
 
@@ -67,14 +69,12 @@ public class NotificacaoController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<NotificacaoResponse> atualizar(
-    @RequestBody NotificacaoRequest topicoForumRequest, @PathVariable Long id
-    ) 
-    {
+  public ResponseEntity<Notificacao> atualizar(
+      @RequestBody Notificacao topicoForumRequest, @PathVariable Long id) {
     ModelMapper mapper = new ModelMapper();
-    NotificacaoDTO notificacaoDto = mapper.map(topicoForumRequest, NotificacaoDTO.class);
-    notificacaoDto = notificacaoService.update(id, notificacaoDto);
+    Notificacao notificacao = mapper.map(topicoForumRequest, Notificacao.class);
+    notificacao = notificacaoService.update(id, notificacao);
     return new ResponseEntity<>(
-mapper.map(notificacaoDto, NotificacaoResponse.class), HttpStatus.OK);
+        mapper.map(notificacao, Notificacao.class), HttpStatus.OK);
   }
 }

@@ -13,29 +13,27 @@ import br.com.fiap.web_service.model.exception.ResourceNotFoundException;
 
 import br.com.fiap.web_service.repository.TopicoForumRepository;
 
-import br.com.fiap.web_service.shared.TopicoForumDTO;
-
 @Service
 public class TopicoForumService {
   @Autowired
   private TopicoForumRepository topicoForumRepository;
 
-  public List<TopicoForumDTO> findAll() {
+  public List<TopicoForum> findAll() {
     // get all Avaliations
     List<TopicoForum> mensagensForum = topicoForumRepository.findAll();
     return mensagensForum.stream().map(TopicoForum -> new ModelMapper()
-        .map(TopicoForum, TopicoForumDTO.class))
+        .map(TopicoForum, TopicoForum.class))
         .collect(Collectors.toList());
 
   }
 
-  public Optional<TopicoForumDTO> findById(Long id) {
+  public Optional<TopicoForum> findById(Long id) {
     Optional<TopicoForum> TopicoForum = topicoForumRepository.findById(id);
 
     if (TopicoForum.isEmpty()) {
       throw new ResourceNotFoundException("a Topico com o id: " + id + " não encontrada");
     }
-    return Optional.of(new ModelMapper().map(TopicoForum.get(), TopicoForumDTO.class));
+    return Optional.of(new ModelMapper().map(TopicoForum.get(), TopicoForum.class));
   }
 
   public void deleteById(Long id) {
@@ -49,25 +47,25 @@ public class TopicoForumService {
 
   }
 
-  public TopicoForumDTO create(TopicoForumDTO TopicoForumDTO) {
+  public TopicoForum create(TopicoForum TopicoForum) {
 
     // delete the id from the object
-    TopicoForumDTO.setIdTopico(null);
+    TopicoForum.setIdTopico(null);
     // create a mapper object
     ModelMapper mapper = new ModelMapper();
 
-    TopicoForum TopicoForum = mapper.map(TopicoForumDTO, TopicoForum.class);
+    // TopicoForum TopicoForum = mapper.map(TopicoForum, TopicoForum.class);
     TopicoForum = topicoForumRepository.save(TopicoForum);
-    TopicoForumDTO.setIdTopico(TopicoForum.getIdTopico());
-    return TopicoForumDTO;
+    TopicoForum.setIdTopico(TopicoForum.getIdTopico());
+    return TopicoForum;
 
   }
 
-  public TopicoForumDTO update(Long id, TopicoForumDTO TopicoForumDTO) {
-    TopicoForumDTO.setIdTopico(id);
+  public TopicoForum update(Long id, TopicoForum TopicoForum) {
+    TopicoForum.setIdTopico(id);
     ModelMapper mapper = new ModelMapper();
-    TopicoForum TopicoForum = mapper.map(TopicoForumDTO, TopicoForum.class);
+    // TopicoForum TopicoForum = mapper.map(TopicoForum, TopicoForum.class);
     topicoForumRepository.save(TopicoForum);
-    return TopicoForumDTO;
+    return TopicoForum;
   }
 }

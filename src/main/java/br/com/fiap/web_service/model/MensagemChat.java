@@ -2,6 +2,11 @@ package br.com.fiap.web_service.model;
 
 import java.util.Date;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,30 +28,31 @@ public class MensagemChat {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "msg_seq")
 	private Long id;
 
-	@ManyToOne(optional = true)
-	@JoinColumn(name = "id_remetente", nullable = true)
+	// #verified
+	@ManyToOne()
+	@JoinColumn(name = "id_remetente", nullable = false)
+	@JsonBackReference("usuario_mensagemChats")
 	private Usuario remetente;
 
-	@ManyToOne(optional = true)
-	@JoinColumn(name = "id_destinatario", nullable = true)
+	// #verified
+	@ManyToOne()
+	@JoinColumn(name = "id_destinatario", nullable = false)
+	@JsonBackReference("empresa_mensagemChats")
 	private Empresa destinatario;
 
-	@Column(name = "ds_conteudo", nullable = false, columnDefinition = "CLOB")
+	@Column(name = "ds_conteudo", nullable = false, columnDefinition = "text")
 	private String conteudo;
 
-	@Column(name = "dt_data_envio", nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "dt_data_envio", updatable = false, nullable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date dataEnvio;
 
+	@Column(name = "dt_data_update", nullable = true)
+	@UpdateTimestamp
+	private Date dataUpdate;
 	// public MensagemChat() {
 	// super();
 	// // TODO Auto-generated constructor stub
 	// }
-
-	@PrePersist
-	protected void onCreate() {
-		this.dataEnvio = new Date();
-	}
 
 	public Long getId() {
 		return id;
@@ -86,6 +92,14 @@ public class MensagemChat {
 
 	public void setDataEnvio(Date dataEnvio) {
 		this.dataEnvio = dataEnvio;
+	}
+
+	public Date getDataUpdate() {
+		return dataUpdate;
+	}
+
+	public void setDataUpdate(Date dataUpdate) {
+		this.dataUpdate = dataUpdate;
 	}
 
 	// constructors, getters, setters

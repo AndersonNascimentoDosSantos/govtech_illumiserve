@@ -1,6 +1,10 @@
 package br.com.fiap.web_service.model;
 
 import java.util.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,6 +15,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.SequenceGenerator;
@@ -30,16 +35,24 @@ public class Reclamacao {
 	@Column(name = "id_reclamacao")
 	private Long id;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+	// #verified
+	@ManyToOne()
 	@JoinColumn(name = "id_usuario")
+	@JsonBackReference("usuario_reclamacoes")
 	private Usuario usuario;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+	// #verified
+	@ManyToOne()
 	@JoinColumn(name = "id_empresa")
+	@JsonBackReference("empresa_reclamacoes")
 	private Empresa empresa;
 
-	@Column(name = "dt_data_criacao", nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
+	// #verified
+	@ManyToMany(mappedBy = "reclamacao")
+	@JsonManagedReference("reclamacao_redeSocial")
+	private List<PostagemRedeSocial> postredeSocial;
+
+	@Column(name = "dt_data_criacao", updatable = false, nullable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date dataCriacao;
 
 	@Column(name = "ds_latitude")
@@ -55,9 +68,12 @@ public class Reclamacao {
 	@Column(name = "ds_status", nullable = false)
 	private StatusReclamacao status;
 
-	@PrePersist
-	protected void onCreate() {
-		this.dataCriacao = new Date();
+	public List<PostagemRedeSocial> getPostredeSocial() {
+		return postredeSocial;
+	}
+
+	public void setPostredeSocial(List<PostagemRedeSocial> postredeSocial) {
+		this.postredeSocial = postredeSocial;
 	}
 
 	public Long getId() {
@@ -124,5 +140,4 @@ public class Reclamacao {
 		this.status = status;
 	}
 
-	// constructors, getters, and setters
 }

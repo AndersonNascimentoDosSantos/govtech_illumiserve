@@ -1,38 +1,47 @@
 package br.com.fiap.web_service.model;
 
-import java.io.Serializable;
 import java.util.List;
 
+import org.mindrot.jbcrypt.BCrypt;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import br.com.fiap.web_service.Enums.TipoUsuario;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.OneToMany;
-
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-
-import org.mindrot.jbcrypt.BCrypt;
-
-import br.com.fiap.web_service.Enums.TipoUsuario;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "tbl_usuario")
-// @NamedQueries({
-// @NamedQuery(name = "Usuario.findByIdWithReclamacoes",
-// query = "SELECT u FROM Usuario u JOIN FETCH u.reclamacoes WHERE u.idUsuario =
-// :id"),
-//
-// })
+
 public class Usuario {
+
+    public static Usuario autenticar(String email, String password, EntityManager em) throws Exception {
+        try {
+            Usuario usuario = em.createNamedQuery("Usuario.findByEmail", Usuario.class)
+                    .setParameter("email", email)
+                    .getSingleResult();
+            if (usuario.verificaSenha(password)) {
+                return usuario; // authentication successful
+            } else {
+                throw new Exception("Invalid password for user " + email);
+            }
+        } catch (NoResultException e) {
+            throw new Exception("User " + email + " not found");
+        }
+    }
 
     @Id
     @SequenceGenerator(name = "usuario", sequenceName = "seq_usuario", allocationSize = 1)
@@ -42,7 +51,6 @@ public class Usuario {
 
     @Column(name = "nom_name", nullable = false)
     private String nome;
-
     @Column(name = "ds_email", nullable = false, unique = true)
     private String email;
 
@@ -53,16 +61,65 @@ public class Usuario {
     @Column(name = "enum_tipo_usuario", nullable = false)
     private TipoUsuario tipoUsuario;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Reclamacao> reclamacoes;
-
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    // #avaliacoes
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = false)
+    @JsonManagedReference("usuario_avaliacoes")
     private List<Avaliacao> avaliacoes;
 
-    // //
-    // public Usuario() {
-    // // default constructor
-    // }
+    // #notificação #verified
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = false)
+    @JsonManagedReference("usuario_notificacao")
+    private List<Notificacao> notificacao;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = false)
+    @JsonManagedReference("usuario_reclamacoes")
+    private List<Reclamacao> reclamacoes;
+    // // #topicos forum
+    @OneToMany(mappedBy = "usuarioCriador", cascade = CascadeType.ALL, orphanRemoval = false)
+    @JsonManagedReference("usuario_topicoForum")
+    private List<TopicoForum> topicoForum;
+
+    // #rede sociais
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = false)
+    @JsonManagedReference("usuario_redeSocial")
+    private List<RedeSocial> redeSocial;
+
+    // #menssagens do chat
+    @OneToMany(mappedBy = "remetente", cascade = CascadeType.ALL, orphanRemoval = false)
+    @JsonManagedReference("usuario_mensagemChats")
+    private List<MensagemChat> mensagemChats;
+
+    public List<RedeSocial> getRedeSocial() {
+        return redeSocial;
+    }
+
+    public void setRedeSocial(List<RedeSocial> redeSocial) {
+        this.redeSocial = redeSocial;
+    }
+
+    public List<Reclamacao> getReclamacoes() {
+        return reclamacoes;
+    }
+
+    public void setReclamacoes(List<Reclamacao> reclamacoes) {
+        this.reclamacoes = reclamacoes;
+    }
+
+    public List<TopicoForum> getTopicoForum() {
+        return topicoForum;
+    }
+
+    public void setTopicoForum(List<TopicoForum> topicoForum) {
+        this.topicoForum = topicoForum;
+    }
+
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+
+    public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+        this.avaliacoes = avaliacoes;
+    }
 
     @Override
     public String toString() {
@@ -70,22 +127,6 @@ public class Usuario {
                 + ", senha=" + senha
                 + ", tipoUsuario=" + this.getTipoUsuario() + "]";
     }
-
-    // public Usuario(String nome, String email, String senha, TipoUsuario
-    // tipoUsuario) {
-    // this.nome = nome;
-    // this.email = email;
-    // this.tipoUsuario = tipoUsuario;
-    // setSenha(senha);
-    // }
-
-    // @Override
-    // public String toString() {
-    // return "Usuario [idUsuario=" + idUsuario + ", nome=" + nome + ", email=" +
-    // email + ", senha=" + senha
-    // + ", tipoUsuario=" + tipoUsuario + ", reclamacoes=" + reclamacoes + ",
-    // avaliacoes=" + avaliacoes + "]";
-    // }
 
     public String getSenha() {
         return senha;
@@ -123,22 +164,6 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public List<Reclamacao> getReclamacoes() {
-        return this.reclamacoes;
-    }
-
-    public void setReclamacoes(List<Reclamacao> reclamacoes) {
-        this.reclamacoes = reclamacoes;
-    }
-
-    public List<Avaliacao> getAvaliacoes() {
-        return this.avaliacoes;
-    }
-
-    public void setAvaliacoes(List<Avaliacao> avaliacoes) {
-        this.avaliacoes = avaliacoes;
-    }
-
     public void setSenha(String senha) {
         String hash = BCrypt.hashpw(senha, BCrypt.gensalt());
         this.senha = hash;
@@ -148,18 +173,19 @@ public class Usuario {
         return BCrypt.checkpw(senha, this.senha);
     }
 
-    public static Usuario autenticar(String email, String password, EntityManager em) throws Exception {
-        try {
-            Usuario usuario = em.createNamedQuery("Usuario.findByEmail", Usuario.class)
-                    .setParameter("email", email)
-                    .getSingleResult();
-            if (usuario.verificaSenha(password)) {
-                return usuario; // authentication successful
-            } else {
-                throw new Exception("Invalid password for user " + email);
-            }
-        } catch (NoResultException e) {
-            throw new Exception("User " + email + " not found");
-        }
+    public List<MensagemChat> getMensagemChats() {
+        return mensagemChats;
+    }
+
+    public void setMensagemChats(List<MensagemChat> mensagemChats) {
+        this.mensagemChats = mensagemChats;
+    }
+
+    public List<Notificacao> getNotificacao() {
+        return notificacao;
+    }
+
+    public void setNotificacao(List<Notificacao> notificacao) {
+        this.notificacao = notificacao;
     }
 }

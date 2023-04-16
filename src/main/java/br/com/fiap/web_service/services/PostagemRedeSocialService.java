@@ -13,29 +13,27 @@ import br.com.fiap.web_service.model.exception.ResourceNotFoundException;
 
 import br.com.fiap.web_service.repository.PostagemRedeSocialRepository;
 
-import br.com.fiap.web_service.shared.PostagemRedeSocialDTO;
-
 @Service
 public class PostagemRedeSocialService {
   @Autowired
   private PostagemRedeSocialRepository postagemRedeSocialRepository;
 
-  public List<PostagemRedeSocialDTO> findAll() {
+  public List<PostagemRedeSocial> findAll() {
     // get all Avaliations
     List<PostagemRedeSocial> postagenSocials = postagemRedeSocialRepository.findAll();
     return postagenSocials.stream().map(postagemRedeSocial -> new ModelMapper()
-        .map(postagemRedeSocial, PostagemRedeSocialDTO.class))
+        .map(postagemRedeSocial, PostagemRedeSocial.class))
         .collect(Collectors.toList());
 
   }
 
-  public Optional<PostagemRedeSocialDTO> findById(Long id) {
+  public Optional<PostagemRedeSocial> findById(Long id) {
     Optional<PostagemRedeSocial> postagemRedeSocial = postagemRedeSocialRepository.findById(id);
 
     if (postagemRedeSocial.isEmpty()) {
       throw new ResourceNotFoundException("a Postagem com o id: " + id + " não encontrada");
     }
-    return Optional.of(new ModelMapper().map(postagemRedeSocial.get(), PostagemRedeSocialDTO.class));
+    return Optional.of(new ModelMapper().map(postagemRedeSocial.get(), PostagemRedeSocial.class));
   }
 
   public void deleteById(Long id) {
@@ -49,7 +47,7 @@ public class PostagemRedeSocialService {
 
   }
 
-  public PostagemRedeSocialDTO create(PostagemRedeSocialDTO postagemRedeSocialD) {
+  public PostagemRedeSocial create(PostagemRedeSocial postagemRedeSocialD) {
 
     // delete the id from the object
     postagemRedeSocialD.setId(null);
@@ -63,7 +61,7 @@ public class PostagemRedeSocialService {
 
   }
 
-  public PostagemRedeSocialDTO update(Long id, PostagemRedeSocialDTO postagemRedeSocialD) {
+  public PostagemRedeSocial update(Long id, PostagemRedeSocial postagemRedeSocialD) {
     postagemRedeSocialD.setId(id);
     ModelMapper mapper = new ModelMapper();
     PostagemRedeSocial postagemRedeSocial = mapper.map(postagemRedeSocialD, PostagemRedeSocial.class);

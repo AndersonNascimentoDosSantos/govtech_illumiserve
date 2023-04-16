@@ -2,8 +2,6 @@ package br.com.fiap.web_service.shared;
 
 import java.util.List;
 
-import org.mindrot.jbcrypt.BCrypt;
-
 public class EmpresaDTO {
 
   private Long idEmpresa;
@@ -14,11 +12,21 @@ public class EmpresaDTO {
 
   private String email;
 
-  private String senha;
-
   private List<AvaliacaoDTO> avaliacoes;
 
   private List<ReclamacaoDTO> reclamacoes;
+
+  private List<MensagemChatDTO> mensagemChats;
+
+  // getters and setters
+
+  public List<MensagemChatDTO> getMensagemChats() {
+    return mensagemChats;
+  }
+
+  public void setMensagemChats(List<MensagemChatDTO> mensagemChats) {
+    this.mensagemChats = mensagemChats;
+  }
 
   public Long getIdEmpresa() {
     return idEmpresa;
@@ -52,15 +60,6 @@ public class EmpresaDTO {
     this.email = email;
   }
 
-  public void setSenha(String senha) {
-    String hash = BCrypt.hashpw(senha, BCrypt.gensalt());
-    this.senha = hash;
-  }
-
-  public boolean verificaSenha(String senha) {
-    return BCrypt.checkpw(senha, this.senha);
-  }
-
   public List<AvaliacaoDTO> getAvaliacoes() {
     return avaliacoes;
   }
@@ -75,10 +74,6 @@ public class EmpresaDTO {
 
   public void setReclamacoes(List<ReclamacaoDTO> reclamacoes) {
     this.reclamacoes = reclamacoes;
-  }
-
-  public String getSenha() {
-    return senha;
   }
 
 }

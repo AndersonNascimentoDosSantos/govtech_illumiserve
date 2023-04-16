@@ -19,11 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.fiap.web_service.model.MensagemChat;
 import br.com.fiap.web_service.services.MensagemChatService;
-
-import br.com.fiap.web_service.shared.MensagemChatDTO;
-import br.com.fiap.web_service.view.model.request.MensagemChatRequest;
-import br.com.fiap.web_service.view.model.response.MensagemChatResponse;
 
 @RestController
 @RequestMapping("/api/mensagens_chat")
@@ -32,31 +29,31 @@ public class MensagemChatController {
   private MensagemChatService mensagemChatService;
 
   @GetMapping
-  public ResponseEntity<List<MensagemChatResponse>> obterTodos() {
-    List<MensagemChatDTO> mensagemChats = mensagemChatService.findAll();
+  public ResponseEntity<List<MensagemChat>> obterTodos() {
+    List<MensagemChat> mensagemChats = mensagemChatService.findAll();
     ModelMapper mapper = new ModelMapper();
-    List<MensagemChatResponse> resposta = mensagemChats.stream().map(mensagemChat -> mapper
-        .map(mensagemChat, MensagemChatResponse.class))
+    List<MensagemChat> resposta = mensagemChats.stream().map(mensagemChat -> mapper
+        .map(mensagemChat, MensagemChat.class))
         .collect(Collectors.toList());
     return new ResponseEntity<>(resposta, HttpStatus.OK);
   }
 
   @PostMapping
-  public ResponseEntity<MensagemChatResponse> adicionar(@RequestBody MensagemChatRequest mensagemChatReq) {
+  public ResponseEntity<MensagemChat> adicionar(@RequestBody MensagemChat mensagemChatReq) {
     ModelMapper mapper = new ModelMapper();
 
-    MensagemChatDTO MensagemChatDto = mapper.map(mensagemChatReq, MensagemChatDTO.class);
+    MensagemChat MensagemChat = mapper.map(mensagemChatReq, MensagemChat.class);
 
-    MensagemChatDto = mensagemChatService.create(MensagemChatDto);
+    MensagemChat = mensagemChatService.create(MensagemChat);
 
-    return new ResponseEntity<>(mapper.map(MensagemChatDto, MensagemChatResponse.class), HttpStatus.CREATED);
+    return new ResponseEntity<>(mapper.map(MensagemChat, MensagemChat.class), HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Optional<MensagemChatResponse>> obterPorId(@PathVariable Long id) {
+  public ResponseEntity<Optional<MensagemChat>> obterPorId(@PathVariable Long id) {
 
-    Optional<MensagemChatDTO> dto = mensagemChatService.findById(id);
-    return new ResponseEntity<>(Optional.of(new ModelMapper().map(dto.get(), MensagemChatResponse.class)),
+    Optional<MensagemChat> dto = mensagemChatService.findById(id);
+    return new ResponseEntity<>(Optional.of(new ModelMapper().map(dto.get(), MensagemChat.class)),
         HttpStatus.OK);
 
   }
@@ -68,12 +65,12 @@ public class MensagemChatController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<MensagemChatResponse> atualizar(@RequestBody MensagemChatRequest mensagemChatReq,
+  public ResponseEntity<MensagemChat> atualizar(@RequestBody MensagemChat mensagemChatReq,
       @PathVariable Long id) {
     ModelMapper mapper = new ModelMapper();
-    MensagemChatDTO mensagemChatDto = mapper.map(mensagemChatReq, MensagemChatDTO.class);
-    mensagemChatDto = mensagemChatService.update(id, mensagemChatDto);
+    MensagemChat mensagemChat = mapper.map(mensagemChatReq, MensagemChat.class);
+    mensagemChat = mensagemChatService.update(id, mensagemChat);
     return new ResponseEntity<>(
-        mapper.map(mensagemChatDto, MensagemChatResponse.class), HttpStatus.OK);
+        mapper.map(mensagemChat, MensagemChat.class), HttpStatus.OK);
   }
 }
