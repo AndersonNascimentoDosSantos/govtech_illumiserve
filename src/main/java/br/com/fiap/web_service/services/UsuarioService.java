@@ -99,6 +99,8 @@ public class UsuarioService {
    */
   public Usuario update(Long id, Usuario Usuario) {
     // passar o id para o Usuario
+    Optional<Usuario> usuario = this.findById(id);
+
     Usuario.setIdUsuario(id);
     // criar objeto de mapeamento
     ModelMapper mapper = new ModelMapper();

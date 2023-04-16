@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.SequenceGenerator;
@@ -34,7 +35,8 @@ public class Notificacao {
 	@JsonBackReference("usuario_notificacao")
 	private Usuario usuario;
 
-	@Column(name = "ds_mensagem", columnDefinition = "text")
+	@Column(name = "ds_mensagem", columnDefinition = "CLOB")
+	@Lob
 	private String mensagem;
 
 	@Column(name = "dt_data_envio", updatable = false, nullable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
