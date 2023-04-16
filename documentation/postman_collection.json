@@ -118,6 +118,51 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"idUsuario\": 1,\n    \"nome\": \"sonho de doce de chocolate\",\n    \"email\": \"tec.anderson@gmail.com\",\n    \"senha\": \"$2a$10$9uqzYWtMwmWAKHiWbW7tK.nXqOY/gsOgjBHtFHUSY.xbKf./zBHhm\",\n    \"tipoUsuario\": \"USER\",\n    \"avaliacoes\": [],\n    \"notificação\": [\n        {\n            \"idNotificacao\": 3,\n            \"mensagem\": \"era uma notificação\",\n            \"dataEnvio\": \"2023-04-12T01:42:00.204+00:00\"\n        }\n    ],\n    \"reclamacoes\": [\n        {\n            \"id\": 1,\n            \"postredeSocial\": [\n                {\n                    \"id\": 1,\n                    \"mensagem\": \"isto é uma mensagem do forum\",\n                    \"dataPostagem\": \"2023-04-12T01:02:58.696+00:00\"\n                },\n                {\n                    \"id\": 2,\n                    \"mensagem\": \"isto é uma mensagem do forum\",\n                    \"dataPostagem\": \"2023-04-12T01:03:00.834+00:00\"\n                }\n            ],\n            \"dataCriacao\": \"2023-04-12T01:02:18.845+00:00\",\n            \"latitude\": 0.0,\n            \"longitude\": 0.0,\n            \"descricao\": \"falta de iluminação publica\",\n            \"status\": \"ABERTA\"\n        }\n    ],\n    \"topicoForum\": [\n        {\n            \"idTopico\": 1,\n            \"titulo\": \"empresa neo energia\",\n            \"descricao\": \"isto é um topico\",\n            \"dataCriacao\": \"2023-04-12T01:02:07.373+00:00\",\n            \"mensagemForum\": [\n                {\n                    \"idMensagem\": 1,\n                    \"conteudo\": \"isto é uma mensagem do forum\",\n                    \"dataPostagem\": \"2023-04-12T01:02:13.426+00:00\"\n                }\n            ]\n        }\n    ],\n    \"redeSocial\": [\n        {\n            \"id\": 1,\n            \"nome\": \"linkedin\",\n            \"urlPagina\": \"teste.url.com.br\",\n            \"postRedeSocial\": [\n                {\n                    \"id\": 2,\n                    \"mensagem\": \"isto é uma mensagem do forum\",\n                    \"dataPostagem\": \"2023-04-12T01:03:00.834+00:00\"\n                },\n                {\n                    \"id\": 1,\n                    \"mensagem\": \"isto é uma mensagem do forum\",\n                    \"dataPostagem\": \"2023-04-12T01:02:58.696+00:00\"\n                }\n            ]\n        }\n    ],\n    \"mensagemChats\": []\n}"
+						},
+						{
+							"name": "not found / 404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/usuarios/4",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"4"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Apr 2023 11:12:59 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"titulo\": \"Not Found\",\n    \"status\": 404,\n    \"mensagem\": \"Usuario com o id: 4 não encontrado\"\n}"
 						}
 					]
 				},
@@ -511,6 +556,10 @@
 								"value": "application/json"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n    \"nota\": 5,\n    \"comentario\": \"empresa neo energia\"\n\n}"
+						},
 						"url": {
 							"raw": "{{baseURL1}}/api/avaliacoes/1/1",
 							"host": [
@@ -821,6 +870,10 @@
 								"value": "application/json"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \n    \"nome\": \"empresa neo energia\",\n    \"cnpj\": \"123.4567/0000-56\",\n    \"email\": \"tec.anderson@neoenergia.com.br\"\n   \n}"
+						},
 						"url": {
 							"raw": "{{baseURL1}}/api/empresas",
 							"host": [
@@ -1022,7 +1075,7 @@
 					},
 					"response": [
 						{
-							"name": "no response code found",
+							"name": "not found / 404",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -1038,10 +1091,78 @@
 									]
 								}
 							},
-							"_postman_previewlanguage": "Text",
-							"header": [],
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Apr 2023 11:06:49 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
 							"cookie": [],
-							"body": ""
+							"body": "{\n    \"titulo\": \"Not Found\",\n    \"status\": 404,\n    \"mensagem\": \"a Mensagem com o id: 1 não encontrada\"\n}"
+						},
+						{
+							"name": "successfully / 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL1}}/api/mensagens_chat/2",
+									"host": [
+										"{{baseURL1}}"
+									],
+									"path": [
+										"api",
+										"mensagens_chat",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Apr 2023 11:10:11 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"conteudo\": \"isto é uma mensagem do forum\",\n    \"dataEnvio\": \"2023-04-16T11:06:03.272+00:00\",\n    \"dataUpdate\": \"2023-04-16T11:06:03.169+00:00\"\n}"
 						}
 					]
 				},
@@ -1057,7 +1178,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n \"id\": 1,\n \"conteudo\": \"isto é uma mensagem do forum\",\n \"dataEnvio\": null,\n \"dataUpdate\": \"2023-04-12T00:40:06.030+00:00\"\n}"
+							"raw": "{\n\t\"destinatario\":{\n\t\t\"idEmpresa\":1\n\t},\n\t\"remetente\":{\n\t\t\"idUsuario\":1\n\t},\n\t\"conteudo\":\"isto é uma mensagem do forum\"\n\t\n\t\n}"
 						},
 						"url": {
 							"raw": "{{baseURL1}}/api/mensagens_chat",
@@ -1111,59 +1232,6 @@
 							],
 							"cookie": [],
 							"body": "{\n \"id\": 1,\n \"conteudo\": \"isto é uma mensagem do forum\",\n \"dataEnvio\": null,\n \"dataUpdate\": \"2023-04-12T00:40:06.030+00:00\"\n}"
-						},
-						{
-							"name": "localhost:8080/api/mensagens_chat",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n \"id\": 1,\n \"conteudo\": \"isto é uma mensagem do forum\",\n \"dataEnvio\": null,\n \"dataUpdate\": \"2023-04-12T00:40:06.030+00:00\"\n}"
-								},
-								"url": {
-									"raw": "{{baseURL1}}/api/mensagens_chat",
-									"host": [
-										"{{baseURL1}}"
-									],
-									"path": [
-										"api",
-										"mensagens_chat"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 12 Apr 2023 01:09:54 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": 1,\n    \"conteudo\": \"isto é uma mensagem do forum\",\n    \"dataEnvio\": null,\n    \"dataUpdate\": \"2023-04-12T01:09:54.249+00:00\"\n}"
 						}
 					]
 				},
@@ -1217,10 +1285,6 @@
 					]
 				}
 			]
-		},
-		{
-			"name": "Forum",
-			"item": []
 		},
 		{
 			"name": "Reclamacoes",

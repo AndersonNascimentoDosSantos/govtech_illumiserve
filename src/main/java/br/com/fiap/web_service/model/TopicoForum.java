@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
@@ -28,7 +29,8 @@ public class TopicoForum {
 	private Long idTopico;
 	@Column(name = "ds_titulo", nullable = false)
 	private String titulo;
-	@Column(name = "dt_descricao", nullable = false, columnDefinition = "text")
+	@Column(name = "dt_descricao", nullable = false, columnDefinition = "CLOB")
+	@Lob
 	private String descricao;
 
 	@Column(name = "dt_data_criacao", updatable = false, nullable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")

@@ -3,25 +3,22 @@ package br.com.fiap.web_service.model;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "tbl_avaliacao")
+
 public class Avaliacao {
+
 	@Id
 	@SequenceGenerator(name = "avaliacao", sequenceName = "seq_avaliacao", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "avaliacao")
@@ -49,7 +46,9 @@ public class Avaliacao {
 	@Column(name = "ds_nota", nullable = false)
 	private Integer nota;
 
-	@Column(name = "ds_comentario", columnDefinition = "text", nullable = false)
+	// @Type(value = materializedClob)
+	@Column(name = "ds_comentario", nullable = false, columnDefinition = "CLOB")
+	@Lob
 	private String comentario;
 
 	@Column(name = "dt_data_avaliacao", updatable = false, nullable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")

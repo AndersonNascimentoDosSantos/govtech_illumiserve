@@ -5,20 +5,16 @@ import java.util.Date;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "tbl_mensagem_chat")
@@ -40,7 +36,8 @@ public class MensagemChat {
 	@JsonBackReference("empresa_mensagemChats")
 	private Empresa destinatario;
 
-	@Column(name = "ds_conteudo", nullable = false, columnDefinition = "text")
+	@Column(name = "ds_conteudo", nullable = false, columnDefinition = "CLOB")
+	@Lob
 	private String conteudo;
 
 	@Column(name = "dt_data_envio", updatable = false, nullable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")

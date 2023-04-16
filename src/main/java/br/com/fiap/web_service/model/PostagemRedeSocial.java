@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
@@ -37,7 +38,8 @@ public class PostagemRedeSocial {
 	@JsonBackReference("reclamacao_redeSocial")
 	private Reclamacao reclamacao;
 
-	@Column(name = "ds_messagem", nullable = false, columnDefinition = "text")
+	@Column(name = "ds_messagem", nullable = false, columnDefinition = "CLOB")
+	@Lob
 	private String mensagem;
 
 	@Column(name = "dt_data_postagem", updatable = false, nullable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
