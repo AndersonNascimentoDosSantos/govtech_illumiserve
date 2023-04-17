@@ -34,6 +34,18 @@ A plataforma Govtech IllumiServe foi desenvolvida utilizando as seguintes tecnol
 - React Native: para o desenvolvimento dos aplicativos móveis.
 - Spring(java): para o desenvolvimento da API que conecta os aplicativos móveis com o banco de dados.[documentação](https://github.com/AndersonNascimentoDosSantos/govtech_illumiserve/tree/master/documentation)
 - Oracle ou PostgreSQL: para o armazenamento dos dados.
+## Atenção:
+```
+Ao usar outro banco de dados altere nas seguintes entidades o tipo de dado para TEXT:
+ altere de columnDefinition = "CLOB"  para  columnDefinition = "TEXT"
+ nas seguintes entidades:
+ web_service/model/Avaliacao.java
+ web_service/model/MensagemChat.java
+ web_service/model/PostagemRedeSocial.java
+ web_service/model/Notificacao.java
+ web_service/model/MensagemForum.java
+ web_service/model/TopicoForum.java
+```
 
 ## Como contribuir
 
