@@ -28,7 +28,7 @@ public class Empresa {
 	@Column(name = "nom_nome", nullable = false)
 	private String nome;
 
-	@Column(name = "ds_cnpj", nullable = false)
+	@Column(name = "ds_cnpj", nullable = false, unique = true)
 	private String cnpj;
 
 	@Column(name = "ds_email", nullable = false, unique = true)

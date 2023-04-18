@@ -34,6 +34,37 @@ A plataforma Govtech IllumiServe foi desenvolvida utilizando as seguintes tecnol
 - React Native: para o desenvolvimento dos aplicativos móveis.
 - Spring(java): para o desenvolvimento da API que conecta os aplicativos móveis com o banco de dados.[documentação](https://github.com/AndersonNascimentoDosSantos/govtech_illumiserve/tree/master/documentation)
 - Oracle ou PostgreSQL: para o armazenamento dos dados.
+## Atenção:
+```
+Ao usar outro banco de dados altere nas seguintes entidades o tipo de dado CLOB para TEXT:
+ altere de columnDefinition = "CLOB"  para  columnDefinition = "TEXT"
+ nas seguintes entidades:
+ web_service/model/Avaliacao.java
+ web_service/model/MensagemChat.java
+ web_service/model/PostagemRedeSocial.java
+ web_service/model/Notificacao.java
+ web_service/model/MensagemForum.java
+ web_service/model/TopicoForum.java
+```
+outro ajuste necessario é a alteração do arquivo [aplication.properties]()
+
+```
+spring.datasource.url=jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl
+spring.datasource.username=RM-----
+spring.datasource.password=ddmmaa
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+spring.jpa.database-platform=org.hibernate.dialect.OracleDialect
+```
+para 
+```
+spring.datasource.url=jdbc:postgresql:host_do_seu_banco:PORTA/postgres
+ spring.datasource.driver-class-name=org.postgresql.Driver
+ spring.jpa.database=postgresql
+ spring.datasource.username=seu_usuario
+ spring.datasource.password=sua_senha
+ spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+
+```
 
 ## Como contribuir
 
