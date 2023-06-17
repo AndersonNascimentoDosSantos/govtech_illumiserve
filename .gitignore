@@ -12,6 +12,7 @@ target/
 .settings
 .springBeans
 .sts4-cache
+ /volume/u2/oradata/**
 
 ### IntelliJ IDEA ###
 .idea
