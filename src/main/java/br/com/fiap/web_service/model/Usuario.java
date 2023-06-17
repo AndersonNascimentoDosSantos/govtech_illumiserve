@@ -1,12 +1,8 @@
 package br.com.fiap.web_service.model;
 
 import java.util.List;
-
 import org.mindrot.jbcrypt.BCrypt;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import br.com.fiap.web_service.Enums.TipoUsuario;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -21,7 +17,6 @@ import jakarta.persistence.NoResultException;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "tbl_usuario")

@@ -1,9 +1,7 @@
 package br.com.fiap.web_service.model;
 
 import java.util.Date;
-
 import org.hibernate.annotations.UpdateTimestamp;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
